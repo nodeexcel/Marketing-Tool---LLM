@@ -35,6 +35,8 @@ import { CampaignConceptOutput } from '../Core/agents/CampaignConceptOutput';
 import { ContentCalendarOutput } from '../Core/agents/ContentCalendarOutput';
 import { ImageGeneratorOutput } from '../Core/agents/ImageGeneratorOutput';
 import { GrowthOutput } from '../Core/agents/GrowthOutput';
+import { CompetitorIntelligenceOutput } from '../Core/agents/CompetitorIntelligenceOutput';
+import { TrendScannerOutput } from '../Core/agents/TrendScannerOutput';
 import { ABTestSetupOutput } from '../Core/agents/ABTestSetupOutput';
 import { ColdEmailOutput } from '../Core/agents/ColdEmailOutput';
 import EmailSequenceOutput from '../Core/agents/EmailSequenceOutput';
@@ -649,6 +651,24 @@ export default function DeckCardNode({ data, selected }: { data: DeckCardData; s
                         onMouseDown={e => e.stopPropagation()}
                     >
                         <ABTestSetupOutput data={data.structured_data} compact />
+                    </div>
+                ) : data.agent_used === 'competitor_intelligence' && data.structured_data ? (
+                    <div
+                        style={contentSurface}
+                        className="nodrag deckcard-md"
+                        onWheelCapture={e => e.stopPropagation()}
+                        onMouseDown={e => e.stopPropagation()}
+                    >
+                        <CompetitorIntelligenceOutput data={data.structured_data} compact />
+                    </div>
+                ) : data.agent_used === 'trend_scanner' && data.structured_data ? (
+                    <div
+                        style={contentSurface}
+                        className="nodrag deckcard-md"
+                        onWheelCapture={e => e.stopPropagation()}
+                        onMouseDown={e => e.stopPropagation()}
+                    >
+                        <TrendScannerOutput data={data.structured_data} compact />
                     </div>
                 ) : [
                     'pricing_strategy','launch_strategy','content_strategy','marketing_ideas','marketing_psychology',

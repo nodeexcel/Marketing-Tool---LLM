@@ -49,7 +49,12 @@ async def _submit_and_poll(
 ) -> str:
     """Submit a Flux job and poll until the image URL is ready."""
     submit_resp = await http.post(f"{BFL_API_BASE}/{model}", headers=headers, json=payload)
-    submit_resp.raise_for_status()
+    if submit_resp.status_code >= 400:
+        # Surface BFL's actual error body so wrong model names / bad params are visible.
+        body_preview = submit_resp.text[:500] if submit_resp.text else "<empty>"
+        print(f"[FLUX] HTTP {submit_resp.status_code} from {model}: {body_preview}", flush=True)
+        logger.error("FLUX_HTTP_ERROR model=%s status=%d body=%s", model, submit_resp.status_code, body_preview)
+        submit_resp.raise_for_status()
     submit_data = submit_resp.json()
     job_id = submit_data.get("id")
     polling_url = submit_data.get("polling_url") or f"{BFL_API_BASE}/get_result?id={job_id}"
@@ -75,6 +80,16 @@ async def _submit_and_poll(
         # Otherwise still "Pending" / "Task not found yet" — keep polling.
 
 
+def _uses_aspect_ratio_param(model: str) -> bool:
+    """Some BFL endpoints expect `aspect_ratio` (string) instead of `width`/`height`.
+
+    True for flux-pro-1.1-ultra and (likely) all flux-2-* models, which control
+    their own output dimensions internally and don't accept explicit pixel sizes.
+    """
+    m = model.lower()
+    return "ultra" in m or m.startswith("flux-2") or "-2-" in m or m.startswith("flux-pro-2")
+
+
 async def generate_image(
     prompt: str,
     model: str | None = None,
@@ -90,16 +105,35 @@ async def generate_image(
         raise RuntimeError("FLUX_API_KEY is not set in the environment")
 
     model = model or settings.model_image_gen
-    width, height = _dimensions(aspect_ratio)
     full_prompt = f"{prompt}, {style} style" if style else prompt
-    payload = {
+
+    # Build a model-appropriate payload — ultra and flux-2 models take aspect_ratio
+    # directly; older flux-1 endpoints take explicit width/height.
+    payload: dict[str, Any] = {
         "prompt": full_prompt,
-        "width": width,
-        "height": height,
         "output_format": "png",
-        "prompt_upsampling": False,
+        "prompt_upsampling": True,
         "safety_tolerance": 2,
     }
+    width: int | None = None
+    height: int | None = None
+    if _uses_aspect_ratio_param(model):
+        payload["aspect_ratio"] = aspect_ratio
+    else:
+        width, height = _dimensions(aspect_ratio)
+        payload["width"] = width
+        payload["height"] = height
+
+    endpoint = f"{BFL_API_BASE}/{model}"
+    # Visible print so the user can confirm which model is being hit at runtime.
+    print(
+        f"[FLUX] model={model!r}  endpoint={endpoint}  "
+        f"aspect={aspect_ratio}  "
+        f"dimensions={'auto-by-model' if width is None else f'{width}x{height}'}  "
+        f"num_images={num_images}  prompt_chars={len(full_prompt)}",
+        flush=True,
+    )
+
     headers = {
         "x-key": settings.flux_api_key,
         "Content-Type": "application/json",
@@ -107,8 +141,10 @@ async def generate_image(
     }
 
     logger.info(
-        "FLUX_CALL_START model=%s aspect=%s dimensions=%dx%d num_images=%d prompt_chars=%d",
-        model, aspect_ratio, width, height, num_images, len(full_prompt),
+        "FLUX_CALL_START model=%s endpoint=%s aspect=%s dimensions=%s num_images=%d prompt_chars=%d payload_keys=%s",
+        model, endpoint, aspect_ratio,
+        "auto" if width is None else f"{width}x{height}",
+        num_images, len(full_prompt), list(payload.keys()),
     )
 
     results: list[dict[str, Any]] = []

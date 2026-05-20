@@ -523,6 +523,13 @@ async def core_agent_generate(
             input_data["urls_to_scrape"] = urls
             logger.info("Auto-added site_url %s to scraping queue for agent %s", site_url, agent_id)
 
+        # Auto-scrape competitor_url for the Competitor Intelligence agent
+        competitor_url = input_data.get("competitor_url")
+        if agent_id == "competitor_intelligence" and competitor_url and competitor_url not in urls:
+            urls.append(competitor_url)
+            input_data["urls_to_scrape"] = urls
+            logger.info("Auto-added competitor_url %s to scraping queue for agent %s", competitor_url, agent_id)
+
         if urls and not input_data.get("scraped_content"):
             try:
                 scraped = await ScraperService.scrape_multiple(urls)

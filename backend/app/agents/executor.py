@@ -179,4 +179,12 @@ class AgentExecutorCore:
             from app.agents.growth.growth_agent import GrowthStrategyAgent
             return GrowthStrategyAgent()
 
+        # Category 12: Intelligence (new — Phase 3)
+        elif agent_id == "competitor_intelligence":
+            from app.agents.growth.competitor_intelligence import CompetitorIntelligenceAgent
+            return CompetitorIntelligenceAgent()
+        elif agent_id == "trend_scanner":
+            from app.agents.growth.trend_scanner import TrendScannerAgent
+            return TrendScannerAgent()
+
         raise NotImplementedError(f"Agent implementation not found for {agent_id}")

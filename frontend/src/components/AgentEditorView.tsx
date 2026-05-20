@@ -60,6 +60,8 @@ import { ABTestSetupOutput } from './Core/agents/ABTestSetupOutput';
 import { MarketingPsychologyOutput } from './Core/agents/MarketingPsychologyOutput';
 import { ContentStrategyOutput } from './Core/agents/ContentStrategyOutput';
 import { CompetitorAlternativesOutput } from './Core/agents/CompetitorAlternativesOutput';
+import { CompetitorIntelligenceOutput } from './Core/agents/CompetitorIntelligenceOutput';
+import { TrendScannerOutput } from './Core/agents/TrendScannerOutput';
 import { SEOAuditOutput } from './Core/agents/SEOAuditOutput';
 import { SchemaMarkupOutput } from './Core/agents/SchemaMarkupOutput';
 import ReferralProgramOutput from './Core/agents/ReferralProgramOutput';
@@ -331,7 +333,7 @@ export default function AgentEditorView() {
         'logo_designer', 'hero_image', 'ad_creative', 'product_photoshoot', 'mockup_generator', 'image_generator', 'image_editor', 'infographic',
         'pricing_strategy', 'launch_strategy', 'content_strategy', 'marketing_ideas', 'marketing_psychology',
         'analytics_tracking', 'free_tool_strategy', 'product_marketing_context', 'copywriting', 'social_content',
-        'paid_ads', 'site_architecture', 'schema_markup', 'ai_seo', 'competitor_alternatives', 'programmatic_seo',
+        'paid_ads', 'site_architecture', 'schema_markup', 'ai_seo', 'competitor_alternatives', 'competitor_intelligence', 'trend_scanner', 'programmatic_seo',
         'ab_test_setup', 'form_cro', 'onboarding_cro', 'paywall_upgrade_cro', 'popup_cro', 'signup_flow_cro',
         'churn_prevention', 'email_sequence', 'referral_program', 'revops', 'sales_enablement',
         'growth_strategy', 'meta_ads', 'google_search_ads', 'google_display_ads', 'linkedin_lead_gen', 'pinterest_ads', 'tiktok_ads', 'youtube_ads', 'amazon_ppc',
@@ -370,6 +372,8 @@ export default function AgentEditorView() {
             case 'marketing_psychology': return <MarketingPsychologyOutput data={structuredOutput} />;
             case 'schema_markup': return <SchemaMarkupOutput data={structuredOutput} />;
             case 'competitor_alternatives': return <CompetitorAlternativesOutput data={structuredOutput} />;
+            case 'competitor_intelligence': return <CompetitorIntelligenceOutput data={structuredOutput} />;
+            case 'trend_scanner': return <TrendScannerOutput data={structuredOutput} />;
             case 'ab_test_setup': return <ABTestSetupOutput data={structuredOutput} />;
             case 'page_cro': return <PageCROOutput data={structuredOutput} />;
             case 'referral_program': return <ReferralProgramOutput data={structuredOutput} />;

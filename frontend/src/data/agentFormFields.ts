@@ -875,6 +875,69 @@ const COMPETITOR_ALTERNATIVES_FIELDS: FormFieldDef[] = [
     { name: 'comparison_keywords', icon: 'Search', type: 'tags', label: 'Comparison Keywords', max: 5 }
 ];
 
+const TREND_SCANNER_FIELDS: FormFieldDef[] = [
+    {
+        name: 'niche', icon: 'Radar', type: 'textarea', label: 'Niche to Scan',
+        required: true, section: 'Scope',
+        placeholder: "e.g. 'children's organic snacks', 'B2B SaaS onboarding tools'",
+        rows: 2,
+    },
+    {
+        name: 'our_brand_focus', icon: 'Target', type: 'textarea',
+        label: 'Our Brand Focus (optional)',
+        placeholder: 'Your angle / positioning — e.g. "premium, no-additives, mom-and-pop"',
+        rows: 2,
+    },
+    {
+        name: 'time_horizon', icon: 'Clock', type: 'select', label: 'Time Horizon',
+        defaultValue: 'last_month',
+        options: [
+            { label: 'Last week', value: 'last_week' },
+            { label: 'Last month', value: 'last_month' },
+            { label: 'Last quarter', value: 'last_quarter' },
+            { label: 'Evergreen (not time-sensitive)', value: 'evergreen' },
+        ],
+    },
+    {
+        name: 'scan_depth', icon: 'Layers', type: 'select', label: 'Scan Depth',
+        defaultValue: 'standard',
+        options: [
+            { label: 'Quick (top 3 of each)', value: 'quick' },
+            { label: 'Standard (top 5 of each)', value: 'standard' },
+            { label: 'Deep (top 8 with detailed evidence)', value: 'deep' },
+        ],
+    },
+];
+
+const COMPETITOR_INTELLIGENCE_FIELDS: FormFieldDef[] = [
+    {
+        name: 'competitor_content', icon: 'ClipboardPaste', type: 'textarea',
+        label: 'Paste Competitor Content', section: 'Source (provide at least one)',
+        placeholder: "Paste the competitor's email, SMS, ad copy, or landing-page text here…",
+        rows: 8,
+    },
+    {
+        name: 'competitor_url', icon: 'Link', type: 'text',
+        label: 'Or Competitor URL',
+        placeholder: 'https://competitor.com/landing-page',
+    },
+    {
+        name: 'content_type', icon: 'Tag', type: 'select', label: 'Content Type', defaultValue: 'email',
+        options: [
+            { label: 'Email', value: 'email' },
+            { label: 'SMS', value: 'sms' },
+            { label: 'Ad copy', value: 'ad' },
+            { label: 'Landing page', value: 'landing_page' },
+            { label: 'Social post', value: 'social_post' },
+            { label: 'Blog post', value: 'blog' },
+            { label: 'Other', value: 'other' },
+        ],
+    },
+    { name: 'competitor_name', icon: 'Building2', type: 'text', label: 'Competitor Name (optional)', placeholder: "e.g. Tilly's Tots" },
+    { name: 'our_angle', icon: 'Compass', type: 'textarea', label: 'Our Angle (optional)', placeholder: 'e.g. Lead with our 30-day guarantee', rows: 2 },
+    { name: 'variation_count', icon: 'Hash', type: 'number', label: 'Number of Variations', defaultValue: 3, min: 1, max: 5 },
+];
+
 const SEO_AUDIT_FIELDS: FormFieldDef[] = [
     { name: 'topic', icon: 'Search', type: 'textarea', label: 'Audit Goals', required: true, rows: 3 },
     { name: 'seed_keywords', icon: 'Key', type: 'tags', label: 'Seed Keywords', max: 10 }
@@ -998,6 +1061,8 @@ export const FORM_FIELDS: Record<string, FormFieldDef[]> = {
     ab_test_setup: AB_TEST_FIELDS,
     marketing_psychology: MARKETING_PSYCHOLOGY_FIELDS,
     competitor_alternatives: COMPETITOR_ALTERNATIVES_FIELDS,
+    competitor_intelligence: COMPETITOR_INTELLIGENCE_FIELDS,
+    trend_scanner: TREND_SCANNER_FIELDS,
     seo_audit: SEO_AUDIT_FIELDS,
     schema_markup: SCHEMA_MARKUP_FIELDS,
     referral_program: REFERRAL_PROGRAM_FIELDS,

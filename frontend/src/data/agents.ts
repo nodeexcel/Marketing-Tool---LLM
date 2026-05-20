@@ -6,7 +6,8 @@ import {
     Video, Film, PlaySquare, FileVideo, VideoIcon, FileAudio2, Mic, Tv,
     Pen, MessageCircle, Mail, FileText, Search,
     MessageSquare, CheckCircle, Sparkles,
-    DollarSign, Rocket, MailPlus, MousePointerClick, FlaskConical, Map, Swords, SearchCheck, Code, Share2
+    DollarSign, Rocket, MailPlus, MousePointerClick, FlaskConical, Map, Swords, SearchCheck, Code, Share2,
+    Telescope, Radar
 } from 'lucide-react';
 
 export const AGENT_CATEGORIES = [
@@ -153,6 +154,8 @@ export const AGENT_CATEGORIES = [
             { name: 'Marketing Psychology', id: 'marketing_psychology', icon: Brain, desc: 'Psychology-driven persuasion tactics.', badge: undefined, outputMode: 'structured-text' },
             { name: 'Content Strategy', id: 'content_strategy', icon: Map, desc: 'Strategic content planning.', badge: undefined, outputMode: 'structured-text' },
             { name: 'Competitor Alternatives', id: 'competitor_alternatives', icon: Swords, desc: 'Competitive positioning pages.', badge: undefined, outputMode: 'structured-text' },
+            { name: 'Competitor Intelligence', id: 'competitor_intelligence', icon: Telescope, desc: 'Analyzes competitor copy and rewrites it in your brand voice.', badge: 'New', outputMode: 'structured-text' },
+            { name: 'Trend Scanner', id: 'trend_scanner', icon: Radar, desc: 'Scans a niche for trending themes, hooks, and content formats.', badge: 'New', outputMode: 'structured-text' },
             { name: 'SEO Audit', id: 'seo_audit', icon: SearchCheck, desc: 'Comprehensive SEO site audit.', badge: undefined, outputMode: 'structured-text' },
             { name: 'Schema Markup', id: 'schema_markup', icon: Code, desc: 'Structured data generator.', badge: undefined, outputMode: 'structured-text' },
             { name: 'Referral Program', id: 'referral_program', icon: Share2, desc: 'Viral referral program design.', badge: undefined, outputMode: 'structured-text' },

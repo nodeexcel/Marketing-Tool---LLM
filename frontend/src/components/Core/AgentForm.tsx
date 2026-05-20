@@ -730,7 +730,7 @@ export const AgentForm: React.FC<AgentFormProps> = ({
                         acceptTypes={kbAcceptTypes}
                         agentId={agentId}
                         sourceCardId={draftCardId}
-                        allowUpload={false}
+                        allowUpload={agentId === 'competitor_intelligence'}
                     />
                     <UrlScraperInput />
                     <OutputSelector />

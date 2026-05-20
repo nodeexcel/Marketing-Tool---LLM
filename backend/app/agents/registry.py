@@ -264,5 +264,34 @@ def populate_registry():
             category="growth", icon=icon, input_model=GrowthInput, output_model=GrowthOutput, is_implemented=True
         ))
 
+    # 🕵️ CATEGORY 11: INTELLIGENCE (new — Phase 3)
+    from app.agents.competitor_intelligence_models import (
+        CompetitorIntelligenceInput, CompetitorIntelligenceOutput,
+    )
+    registry.register(AgentMetadata(
+        agent_id="competitor_intelligence",
+        name="Competitor Intelligence",
+        description="Analyzes competitor marketing copy and rewrites it in your brand voice.",
+        category="growth",
+        icon="Telescope",
+        input_model=CompetitorIntelligenceInput,
+        output_model=CompetitorIntelligenceOutput,
+        is_implemented=True,
+    ))
+
+    from app.agents.trend_scanner_models import (
+        TrendScannerInput, TrendScannerOutput,
+    )
+    registry.register(AgentMetadata(
+        agent_id="trend_scanner",
+        name="Trend Scanner",
+        description="Scans a niche across multiple URLs and surfaces what's working, what's saturated, and where the gaps are.",
+        category="growth",
+        icon="Radar",
+        input_model=TrendScannerInput,
+        output_model=TrendScannerOutput,
+        is_implemented=True,
+    ))
+
 # Auto-populate on import
 populate_registry()

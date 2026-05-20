@@ -183,6 +183,8 @@ const AGENT_CATEGORIES: CategoryDef[] = [
       { id: 'ab_test_setup', label: 'A/B Test Setup' },
       { id: 'marketing_psychology', label: 'Marketing Psychology' },
       { id: 'competitor_alternatives', label: 'Competitor Alternatives' },
+      { id: 'competitor_intelligence', label: 'Competitor Intelligence' },
+      { id: 'trend_scanner', label: 'Trend Scanner' },
       { id: 'seo_audit', label: 'SEO Audit' },
       { id: 'schema_markup', label: 'Schema Markup' },
       { id: 'referral_program', label: 'Referral Program' },
