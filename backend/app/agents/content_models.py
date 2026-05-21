@@ -6,13 +6,9 @@ from app.models.base import BaseAgentInput, BaseAgentOutput
 
 class ContentInput(BaseAgentInput):
     agent_id: Literal[
-        "blog_post", "email_campaign", "newsletter", "press_release",
-        "whitepaper", "landing_page", "product_description",
-        "case_study", "faq_generator", "sms_marketing",
-        "content_audit",
-        # legacy aliases
-        "landing_page_copy", "testimonial_writer", "script_writer",
-        "ebook_outline", "web_copy"
+        "blog_post", "email_campaign", "newsletter",
+        "landing_page", "product_description",
+        "faq_generator", "sms_marketing",
     ]
     topic: str
     target_length_words: Optional[int] = None
@@ -60,12 +56,7 @@ class ContentOutput(BaseAgentOutput):
 class AdCopyInput(BaseAgentInput):
     agent_id: Literal[
         "meta_ads", "google_search_ads", "google_display_ads",
-        "linkedin_lead_gen", "pinterest_ads", "tiktok_ads",
-        "youtube_ads", "amazon_ppc",
-        # legacy aliases
-        "meta_ad_copy", "google_search_ad", "display_ad_copy",
-        "linkedin_ad_copy", "twitter_ad_copy", "tiktok_ad_script",
-        "pinterest_ad", "youtube_ad_copy"
+        "youtube_ads",
     ]
     product_name: str
     offer: str

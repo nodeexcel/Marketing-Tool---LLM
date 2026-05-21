@@ -11,14 +11,11 @@ class VideoScene(BaseModel):
     duration_seconds: float
     on_screen_text: Optional[str] = None
 
-# 5.1 Video Ads & Scripts (40-42)
+# 5.1 Video Ads & Scripts
 class VideoScriptInput(BaseAgentInput):
     agent_id: Literal[
         "video_ad_script", "youtube_script", "ai_video_gen",
-        "video_summarizer", "caption_generator",
-        "thumbnail_idea", "video_trend_analyzer",
-        # legacy aliases
-        "video_ad", "video_script", "video_description"
+        "thumbnail_idea",
     ]
     topic: str
     target_duration: float = 60.0           # Seconds
@@ -44,23 +41,7 @@ class VideoScriptOutput(BaseAgentOutput):
     cta: str
     seo_description: Optional[str] = None
 
-# 5.2 Audio/Video Tools (43-44)
-class VideoToolsInput(BaseAgentInput):
-    agent_id: Literal[
-        "video_summarizer",
-        # legacy aliases
-        "audio_summarizer", "social_media_snippets"
-    ]
-    source_media_url: str
-    max_summary_length: int = 500
-    snippet_count: int = 3
-
-class VideoToolsOutput(BaseAgentOutput):
-    summary: Optional[str] = None
-    chapters: List[Dict[str, str]] = []     # [{"timestamp": "0:00", "title": "..."}]
-    snippets: List[Dict[str, Any]] = []      # [{"start": 10, "end": 25, "reason": "..."}]
-
-# 5.3 AI Video Generation (45-47)
+# 5.2 AI Video Generation
 class VideoGenInput(BaseAgentInput):
     agent_id: Literal[
         "ai_video_gen",

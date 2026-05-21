@@ -61,29 +61,20 @@ def populate_registry():
     from app.agents.social_models import (
         InstagramAgentInput, InstagramAgentOutput,
         FacebookAgentInput, FacebookAgentOutput,
-        LinkedInAgentInput, LinkedInAgentOutput,
-        TwitterAgentInput, TwitterAgentOutput,
-        PinterestTikTokInput, PinterestTikTokOutput,
-        CrossPostInput, CrossPostOutput
     )
     from app.agents.video_models import (
         VideoScriptInput, VideoScriptOutput,
-        VideoToolsInput, VideoToolsOutput,
-        VideoGenInput, VideoGenOutput
+        VideoGenInput, VideoGenOutput,
     )
     from app.agents.content_models import (
         ContentInput, ContentOutput,
         AdCopyInput, AdCopyOutput,
-        SEOInput, SEOOutput
+        SEOInput, SEOOutput,
     )
     from app.agents.utility_models import (
-        AudioInput, AudioOutput,
-        UtilityInput, UtilityOutput
+        UtilityInput, UtilityOutput,
     )
-    from app.agents.growth_models import (
-        GrowthInput, GrowthOutput
-    )
-    
+
     # 🏷️ CATEGORY 1: BRAND IDENTITY (6)
     registry.register(AgentMetadata(
         agent_id="brand_identity", name="Brand Identity Builder",
@@ -133,7 +124,7 @@ def populate_registry():
         category="strategy", icon="Calendar", input_model=ContentCalendarInput, output_model=ContentCalendarOutput, is_implemented=True
     ))
 
-    # 🖼️ CATEGORY 3: VISUAL DESIGN (8)
+    # 🖼️ CATEGORY 3: VISUAL DESIGN (7)
     registry.register(AgentMetadata(
         agent_id="logo_designer", name="Logo Designer",
         description="Generates professional logo variations based on brand style.",
@@ -169,7 +160,8 @@ def populate_registry():
         description="Transforms data and concepts into visual infographics.",
         category="visual", icon="BarChart", input_model=InfographicInput, output_model=InfographicOutput, is_implemented=True
     ))
-    # 📱 CATEGORY 4: SOCIAL MEDIA
+
+    # 📱 CATEGORY 4: SOCIAL MEDIA (7) — Instagram + Facebook only
     for aid in ["instagram_post", "instagram_story", "instagram_reel", "instagram_carousel", "instagram_bio"]:
         registry.register(AgentMetadata(
             agent_id=aid, name=f"IG {aid.split('_')[1].title()}", description=f"Optimized Instagram {aid.split('_')[1]} content.",
@@ -180,43 +172,23 @@ def populate_registry():
             agent_id=aid, name=f"FB {aid.split('_')[1].title()}", description=f"Engagement-focused Facebook {aid.split('_')[1]}.",
             category="social", icon="Facebook", input_model=FacebookAgentInput, output_model=FacebookAgentOutput, is_implemented=True
         ))
-    for aid in ["linkedin_post", "linkedin_article", "linkedin_ad"]:
-        registry.register(AgentMetadata(
-            agent_id=aid, name=f"LI {aid.split('_')[1].title()}", description=f"Professional LinkedIn {aid.split('_')[1]}.",
-            category="social", icon="LinkedIn", input_model=LinkedInAgentInput, output_model=LinkedInAgentOutput, is_implemented=True
-        ))
-    for aid in ["twitter_tweet", "twitter_thread", "twitter_ad"]:
-        registry.register(AgentMetadata(
-            agent_id=aid, name=f"X {aid.split('_')[1].title()}", description=f"Viral X/Twitter {aid.split('_')[1]}.",
-            category="social", icon="Twitter", input_model=TwitterAgentInput, output_model=TwitterAgentOutput, is_implemented=True
-        ))
-    for aid in ["pinterest_pin", "pinterest_ad"]:
-        registry.register(AgentMetadata(
-            agent_id=aid, name=f"PH {aid.split('_')[1].title()}", description=f"Pinterest {aid.split('_')[1]}.",
-            category="social", icon="Pinterest", input_model=PinterestTikTokInput, output_model=PinterestTikTokOutput, is_implemented=True
-        ))
-    for aid in ["tiktok_script", "tiktok_trend", "tiktok_ad"]:
-        registry.register(AgentMetadata(
-            agent_id=aid, name=f"TT {aid.split('_')[1].title()}", description=f"TikTok {aid.split('_')[1]}.",
-            category="social", icon="TikTok", input_model=PinterestTikTokInput, output_model=PinterestTikTokOutput, is_implemented=True
-        ))
 
-    # 🎬 CATEGORY 5: VIDEO & MOTION (8)
-    for aid in ["video_ad_script", "youtube_script", "ai_video_gen", "video_summarizer", "caption_generator", "thumbnail_idea", "video_trend_analyzer"]:
+    # 🎬 CATEGORY 5: VIDEO & MOTION (4)
+    for aid in ["video_ad_script", "youtube_script", "ai_video_gen", "thumbnail_idea"]:
         registry.register(AgentMetadata(
             agent_id=aid, name=aid.replace('_', ' ').title(), description=f"Platform-optimized {aid.replace('_', ' ')}.",
             category="video", icon="Video", input_model=VideoScriptInput, output_model=VideoScriptOutput, is_implemented=True
         ))
 
-    # 📝 CATEGORY 6: CONTENT & COPY (12)
-    for aid in ["blog_post", "email_campaign", "newsletter", "landing_page", "case_study", "press_release", "whitepaper", "product_description", "faq_generator", "sms_marketing", "content_audit"]:
+    # 📝 CATEGORY 6: CONTENT & COPY (7)
+    for aid in ["blog_post", "email_campaign", "newsletter", "landing_page", "product_description", "faq_generator", "sms_marketing"]:
         registry.register(AgentMetadata(
             agent_id=aid, name=aid.replace('_', ' ').title(), description=f"Expert {aid.replace('_', ' ')} writing.",
             category="content", icon="Pen", input_model=ContentInput, output_model=ContentOutput, is_implemented=True
         ))
 
-    # 💰 CATEGORY 7: ADVERTISING COPY (8)
-    for aid in ["meta_ads", "google_search_ads", "google_display_ads", "linkedin_lead_gen", "pinterest_ads", "tiktok_ads", "youtube_ads", "amazon_ppc"]:
+    # 💰 CATEGORY 7: ADVERTISING COPY (4)
+    for aid in ["meta_ads", "google_search_ads", "google_display_ads", "youtube_ads"]:
         registry.register(AgentMetadata(
             agent_id=aid, name=aid.replace('_', ' ').title(), description=f"High-ROI {aid.replace('_', ' ')}.",
             category="ads", icon="DollarSign", input_model=AdCopyInput, output_model=AdCopyOutput, is_implemented=True
@@ -229,42 +201,14 @@ def populate_registry():
             category="seo", icon="Search", input_model=SEOInput, output_model=SEOOutput, is_implemented=True
         ))
 
-    # 🎙️ CATEGORY 9: AUDIO & PODCAST (3)
-    for aid in ["podcast_script", "podcast_description"]:
-        registry.register(AgentMetadata(
-            agent_id=aid, name=aid.replace('_', ' ').title(), description=f"Professional {aid.replace('_', ' ')}.",
-            category="audio", icon="Mic", input_model=AudioInput, output_model=AudioOutput, is_implemented=True
-        ))
-
-    # 🛠️ CATEGORY 10: ADAPTATION & UTILITIES (1)
+    # 🛠️ CATEGORY 9: ADAPTATION & UTILITIES (1)
     registry.register(AgentMetadata(
         agent_id="custom_workflow", name="Content Adaptor",
         description="Repurposes content for different platforms and formats.",
         category="utility", icon="Repeat", input_model=UtilityInput, output_model=UtilityOutput, is_implemented=True
     ))
 
-    # 🚀 CATEGORY 10: GROWTH & STRATEGY (12)
-    growth_agents = {
-        "pricing_strategy": ("Pricing Strategy", "Expert SaaS pricing analysis with tiers and value metrics.", "DollarSign"),
-        "launch_strategy": ("Launch Strategy", "Go-to-market launch planning with timeline and channels.", "Rocket"),
-        "cold_email": ("Cold Email Writer", "Human-sounding cold emails with follow-up sequences.", "Mail"),
-        "email_sequence": ("Email Sequence Builder", "Multi-step email automation sequences.", "MailPlus"),
-        "page_cro": ("Page CRO Analyzer", "Conversion rate optimization for landing pages.", "MousePointerClick"),
-        "ab_test_setup": ("A/B Test Planner", "Statistical test design with hypothesis and metrics.", "FlaskConical"),
-        "marketing_psychology": ("Marketing Psychology", "Psychology-driven persuasion and messaging frameworks.", "Brain"),
-        "content_strategy": ("Content Strategy", "Strategic content planning aligned to business goals.", "Map"),
-        "competitor_alternatives": ("Competitor Alternatives", "Competitive positioning and alternative comparison pages.", "Swords"),
-        "seo_audit": ("SEO Audit", "Comprehensive technical and on-page SEO audit.", "SearchCheck"),
-        "schema_markup": ("Schema Markup", "Structured data and schema.org markup generator.", "Code"),
-        "referral_program": ("Referral Program", "Viral referral and loyalty program design.", "Users"),
-    }
-    for aid, (name, desc, icon) in growth_agents.items():
-        registry.register(AgentMetadata(
-            agent_id=aid, name=name, description=desc,
-            category="growth", icon=icon, input_model=GrowthInput, output_model=GrowthOutput, is_implemented=True
-        ))
-
-    # 🕵️ CATEGORY 11: INTELLIGENCE (new — Phase 3)
+    # 🕵️ CATEGORY 10: INTELLIGENCE (2 — Phase 3)
     from app.agents.competitor_intelligence_models import (
         CompetitorIntelligenceInput, CompetitorIntelligenceOutput,
     )

@@ -34,18 +34,10 @@ import { BrandGuardianOutput } from '../Core/agents/BrandGuardianOutput';
 import { CampaignConceptOutput } from '../Core/agents/CampaignConceptOutput';
 import { ContentCalendarOutput } from '../Core/agents/ContentCalendarOutput';
 import { ImageGeneratorOutput } from '../Core/agents/ImageGeneratorOutput';
-import { GrowthOutput } from '../Core/agents/GrowthOutput';
 import { CompetitorIntelligenceOutput } from '../Core/agents/CompetitorIntelligenceOutput';
 import { TrendScannerOutput } from '../Core/agents/TrendScannerOutput';
-import { ABTestSetupOutput } from '../Core/agents/ABTestSetupOutput';
-import { ColdEmailOutput } from '../Core/agents/ColdEmailOutput';
-import EmailSequenceOutput from '../Core/agents/EmailSequenceOutput';
-import { PageCROOutput } from '../Core/agents/PageCROOutput';
-import { LaunchStrategyOutput } from '../Core/agents/LaunchStrategyOutput';
 import { ContentOutput } from '../Core/agents/ContentOutput';
 import { VideoScriptOutput } from '../Core/agents/VideoScriptOutput';
-import { VideoTrendAnalyzerOutput } from '../Core/agents/VideoTrendAnalyzerOutput';
-import ReferralProgramOutput from '../Core/agents/ReferralProgramOutput';
 
 /* ─────────────────────────────────────────────────── */
 /* Types                                               */
@@ -564,18 +556,9 @@ export default function DeckCardNode({ data, selected }: { data: DeckCardData; s
                     >
                         <ContentCalendarOutput data={data.structured_data} compact />
                     </div>
-                ) : data.agent_used === 'launch_strategy' && data.structured_data ? (
-                    <div
-                        style={contentSurface}
-                        className="nodrag deckcard-md"
-                        onWheelCapture={e => e.stopPropagation()}
-                        onMouseDown={e => e.stopPropagation()}
-                    >
-                        <LaunchStrategyOutput data={data.structured_data} compact />
-                    </div>
                 ) : [
-                    'blog_post','email_campaign','newsletter','landing_page','case_study','press_release','whitepaper',
-                    'product_description','faq_generator','sms_marketing','content_audit'
+                    'blog_post','email_campaign','newsletter','landing_page',
+                    'product_description','faq_generator','sms_marketing'
                 ].includes(data.agent_used || '') && data.structured_data ? (
                     <div
                         style={contentSurface}
@@ -586,7 +569,7 @@ export default function DeckCardNode({ data, selected }: { data: DeckCardData; s
                         <ContentOutput data={data.structured_data} compact />
                     </div>
                 ) : [
-                    'video_ad_script','youtube_script','ai_video_gen','caption_generator','thumbnail_idea'
+                    'video_ad_script','youtube_script','ai_video_gen','thumbnail_idea'
                 ].includes(data.agent_used || '') && data.structured_data ? (
                     <div
                         style={contentSurface}
@@ -595,62 +578,6 @@ export default function DeckCardNode({ data, selected }: { data: DeckCardData; s
                         onMouseDown={e => e.stopPropagation()}
                     >
                         <VideoScriptOutput data={data.structured_data} compact />
-                    </div>
-                ) : data.agent_used === 'video_trend_analyzer' && data.structured_data ? (
-                    <div
-                        style={contentSurface}
-                        className="nodrag deckcard-md"
-                        onWheelCapture={e => e.stopPropagation()}
-                        onMouseDown={e => e.stopPropagation()}
-                    >
-                        <VideoTrendAnalyzerOutput data={data.structured_data} compact />
-                    </div>
-                ) : [
-                    'cold_email',
-                ].includes(data.agent_used || '') && data.structured_data ? (
-                    <div
-                        style={contentSurface}
-                        className="nodrag deckcard-md"
-                        onWheelCapture={e => e.stopPropagation()}
-                        onMouseDown={e => e.stopPropagation()}
-                    >
-                        <ColdEmailOutput data={data.structured_data} compact />
-                    </div>
-                ) : data.agent_used === 'email_sequence' && data.structured_data ? (
-                    <div
-                        style={contentSurface}
-                        className="nodrag deckcard-md"
-                        onWheelCapture={e => e.stopPropagation()}
-                        onMouseDown={e => e.stopPropagation()}
-                    >
-                        <EmailSequenceOutput data={data.structured_data} compact />
-                    </div>
-                ) : data.agent_used === 'referral_program' && data.structured_data ? (
-                    <div
-                        style={contentSurface}
-                        className="nodrag deckcard-md"
-                        onWheelCapture={e => e.stopPropagation()}
-                        onMouseDown={e => e.stopPropagation()}
-                    >
-                        <ReferralProgramOutput data={data.structured_data} compact />
-                    </div>
-                ) : data.agent_used === 'page_cro' && data.structured_data ? (
-                    <div
-                        style={contentSurface}
-                        className="nodrag deckcard-md"
-                        onWheelCapture={e => e.stopPropagation()}
-                        onMouseDown={e => e.stopPropagation()}
-                    >
-                        <PageCROOutput data={data.structured_data} compact />
-                    </div>
-                ) : data.agent_used === 'ab_test_setup' && data.structured_data ? (
-                    <div
-                        style={contentSurface}
-                        className="nodrag deckcard-md"
-                        onWheelCapture={e => e.stopPropagation()}
-                        onMouseDown={e => e.stopPropagation()}
-                    >
-                        <ABTestSetupOutput data={data.structured_data} compact />
                     </div>
                 ) : data.agent_used === 'competitor_intelligence' && data.structured_data ? (
                     <div
@@ -669,21 +596,6 @@ export default function DeckCardNode({ data, selected }: { data: DeckCardData; s
                         onMouseDown={e => e.stopPropagation()}
                     >
                         <TrendScannerOutput data={data.structured_data} compact />
-                    </div>
-                ) : [
-                    'pricing_strategy','launch_strategy','content_strategy','marketing_ideas','marketing_psychology',
-                    'analytics_tracking','free_tool_strategy','product_marketing_context','copywriting','social_content',
-                    'paid_ads','site_architecture','schema_markup','ai_seo','competitor_alternatives','programmatic_seo',
-                    'form_cro','onboarding_cro','paywall_upgrade_cro','popup_cro','signup_flow_cro',
-                    'churn_prevention','email_sequence','referral_program','revops','sales_enablement'
-                ].includes(data.agent_used || '') && data.structured_data ? (
-                    <div
-                        style={contentSurface}
-                        className="nodrag deckcard-md"
-                        onWheelCapture={e => e.stopPropagation()}
-                        onMouseDown={e => e.stopPropagation()}
-                    >
-                        <GrowthOutput data={data.structured_data} compact />
                     </div>
                 ) : data.structured_data ? (
                     <div

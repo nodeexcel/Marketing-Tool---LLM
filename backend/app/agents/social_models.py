@@ -4,7 +4,7 @@ from typing import List, Optional, Dict, Any, Literal
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 from app.models.base import BaseAgentInput, BaseAgentOutput, GeneratedAsset
 
-# --- CATEGORY 4: SOCIAL MEDIA ---
+# --- CATEGORY 4: SOCIAL MEDIA (Instagram + Facebook only) ---
 
 class SocialPost(BaseModel):
     model_config = ConfigDict(extra="allow")
@@ -18,7 +18,7 @@ class SocialPost(BaseModel):
     post_index: int = 0
     assets: List[GeneratedAsset] = []
 
-# 4.1 Instagram (18-22)
+# 4.1 Instagram
 class InstagramAgentInput(BaseAgentInput):
     agent_id: Literal["instagram_post", "instagram_story", "instagram_reel", "instagram_carousel", "instagram_bio"]
     topic: str
@@ -72,7 +72,7 @@ class InstagramAgentOutput(BaseAgentOutput):
     posts: List[SocialPost] = []
     alternate_captions: List[str] = []
 
-# 4.2 Facebook (23-26)
+# 4.2 Facebook
 class FacebookAgentInput(BaseAgentInput):
     agent_id: Literal["facebook_post", "facebook_ad_copy"]
     topic: str
@@ -86,68 +86,3 @@ class FacebookAgentInput(BaseAgentInput):
 class FacebookAgentOutput(BaseAgentOutput):
     post: Optional[SocialPost] = None
     posts: List[SocialPost] = []
-
-# 4.3 LinkedIn (27-30)
-class LinkedInAgentInput(BaseAgentInput):
-    agent_id: Literal["linkedin_post", "linkedin_article", "linkedin_ad"]
-    topic: str
-    professional_tone: str = "expert"        # "expert", "thought_leader", "conversational"
-    content_format: Optional[str] = None
-    outline_depth: Optional[str] = None
-    section_count: Optional[int] = None
-
-
-class LinkedInAgentOutput(BaseAgentOutput):
-    post: Optional[SocialPost] = None
-    posts: List[SocialPost] = []
-    article_content: Optional[str] = None
-
-# 4.4 Twitter/X (31-34)
-class TwitterAgentInput(BaseAgentInput):
-    agent_id: Literal["twitter_tweet", "twitter_thread", "twitter_ad", "twitter_bio"]
-    topic: str
-    tone_override: Optional[str] = None
-    format: Optional[str] = None
-    thread_length: Optional[int] = Field(default=None, ge=1, le=20)
-    reply_goal: Optional[str] = None
-    persona_mode: Optional[str] = None
-    thread_goal: Optional[str] = None
-    thread_outline: Optional[str] = None
-
-
-class TwitterAgentOutput(BaseAgentOutput):
-    tweets: List[str] = []
-    thread_indices: List[int] = []
-    post: Optional[SocialPost] = None
-    posts: List[SocialPost] = []
-
-# 4.5 Pinterest & TikTok (mapped from frontend)
-class PinterestTikTokInput(BaseAgentInput):
-    agent_id: Literal[
-        "pinterest_pin", "pinterest_ad",
-        "tiktok_script", "tiktok_trend", "tiktok_ad"
-    ]
-    topic: str
-    visual_theme: Optional[str] = None
-    tone_override: Optional[str] = None
-    keywords: List[str] = []
-    pin_title: Optional[str] = None
-    destination_url: Optional[str] = None
-    duration_seconds: Optional[int] = None
-    creator_style: Optional[str] = None
-    audio_reference: Optional[str] = None
-
-
-class PinterestTikTokOutput(BaseAgentOutput):
-    post: Optional[SocialPost] = None
-    posts: List[SocialPost] = []
-    alternate_captions: List[str] = []
-
-# 4.6 Multi-Platform & Tools (legacy)
-class CrossPostInput(BaseAgentInput):
-    agent_id: Literal["cross_platform_sync", "social_media_audit", "hastag_generator", "comment_replier", "social_contest"]
-    source_content: str
-    target_platforms: List[str]
-
-class CrossPostOutput(BaseAgentOutput):
-    platform_variations: Dict[str, SocialPost]

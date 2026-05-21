@@ -23,7 +23,7 @@ class AgentExecutorCore:
         files: List[tuple] = [] # (filename, content_bytes)
     ) -> BaseAgentOutput:
         start_time = time.time()
-        
+
         # 1. Get Agent Metadata
         meta = registry.get_agent(agent_id)
         if not meta:
@@ -45,18 +45,18 @@ class AgentExecutorCore:
         # Merge shared fields into input_data
         input_data["workspace_id"] = workspace_id
         input_data["workspace_context"] = workspace_context
-        
+
         agent_input = meta.input_model(**input_data)
 
         # 5. Load and Run Concrete Agent
         # Mapping agent_id to class (this will be handled by a factory or registry)
         agent_instance = await AgentExecutorCore._get_agent_instance(agent_id)
-        
+
         output = await agent_instance.generate(agent_input)
-        
+
         # 6. Finalize Metadata
         output.processing_time_ms = int((time.time() - start_time) * 1000)
-        
+
         return output
 
     @staticmethod
@@ -117,69 +117,47 @@ class AgentExecutorCore:
         elif agent_id == "infographic":
             from app.agents.visual.infographic import InfographicAgent
             return InfographicAgent()
-        # Category 4: Social Media
+
+        # Category 4: Social Media (Instagram + Facebook only)
         elif agent_id in ["instagram_post", "instagram_story", "instagram_reel", "instagram_carousel", "instagram_bio"]:
             from app.agents.social.instagram_agent import InstagramAgent
             return InstagramAgent()
         elif agent_id in ["facebook_post", "facebook_ad_copy"]:
             from app.agents.social.facebook_agent import FacebookAgent
             return FacebookAgent()
-        elif agent_id in ["linkedin_post", "linkedin_article", "linkedin_ad"]:
-            from app.agents.social.linkedin_agent import LinkedInAgent
-            return LinkedInAgent()
-        elif agent_id in ["twitter_tweet", "twitter_thread", "twitter_ad"]:
-            from app.agents.social.twitter_agent import TwitterAgent
-            return TwitterAgent()
-        elif agent_id in ["pinterest_pin", "pinterest_ad", "tiktok_script", "tiktok_trend", "tiktok_ad"]:
-            from app.agents.social.pinterest_tiktok_agent import PinterestTikTokAgent
-            return PinterestTikTokAgent()
-        
-        # Category 5: Video & Motion (8)
-        elif agent_id in ["video_ad_script", "youtube_script", "ai_video_gen", "video_summarizer", "caption_generator", "thumbnail_idea", "video_trend_analyzer"]:
+
+        # Category 5: Video & Motion (4)
+        elif agent_id in ["video_ad_script", "youtube_script", "ai_video_gen", "thumbnail_idea"]:
             from app.agents.video.video_agent import VideoAgent
             return VideoAgent()
-        
-        # Category 6: Content & Copy (12)
+
+        # Category 6: Content & Copy (7)
         elif agent_id == "blog_post":
             from app.agents.content.blog_agent import BlogAgent
             return BlogAgent()
         elif agent_id in ["email_campaign", "newsletter"]:
             from app.agents.content.email_agent import EmailAgent
             return EmailAgent()
-        elif agent_id in ["landing_page", "case_study", "press_release", "whitepaper", "product_description", "faq_generator", "sms_marketing", "content_audit"]:
+        elif agent_id in ["landing_page", "product_description", "faq_generator", "sms_marketing"]:
             from app.agents.content.copy_utility_agent import CopyUtilityAgent
             return CopyUtilityAgent()
-        
-        # Category 7: Advertising Copy (8)
-        elif agent_id in ["meta_ads", "google_search_ads", "google_display_ads", "linkedin_lead_gen", "pinterest_ads", "tiktok_ads", "youtube_ads", "amazon_ppc"]:
+
+        # Category 7: Advertising Copy (4)
+        elif agent_id in ["meta_ads", "google_search_ads", "google_display_ads", "youtube_ads"]:
             from app.agents.ads.ad_copy_agent import AdCopyAgent
             return AdCopyAgent()
-        
+
         # Category 8: SEO & AEO (4)
         elif agent_id in ["keyword_researcher", "on_page_seo", "technical_seo", "aeo_optimizer"]:
             from app.agents.seo.seo_agent import SEOAgent
             return SEOAgent()
-        
-        # Category 9: Audio & Podcast
-        elif agent_id in ["podcast_script", "podcast_description"]:
-            from app.agents.audio.audio_agent import AudioAgent
-            return AudioAgent()
-            
-        # Category 10: Adaptation & Utilities
+
+        # Category 9: Adaptation & Utilities (1)
         elif agent_id in ["custom_workflow"]:
             from app.agents.adaptation.utility_agent import UtilityAgent
             return UtilityAgent()
 
-        # Category 11: Growth & Strategy (12)
-        elif agent_id in [
-            "pricing_strategy", "launch_strategy", "cold_email", "email_sequence",
-            "page_cro", "ab_test_setup", "marketing_psychology", "content_strategy",
-            "competitor_alternatives", "seo_audit", "schema_markup", "referral_program",
-        ]:
-            from app.agents.growth.growth_agent import GrowthStrategyAgent
-            return GrowthStrategyAgent()
-
-        # Category 12: Intelligence (new — Phase 3)
+        # Category 10: Intelligence (Phase 3)
         elif agent_id == "competitor_intelligence":
             from app.agents.growth.competitor_intelligence import CompetitorIntelligenceAgent
             return CompetitorIntelligenceAgent()

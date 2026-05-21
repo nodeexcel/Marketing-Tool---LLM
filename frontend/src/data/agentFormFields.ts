@@ -989,7 +989,7 @@ export const FORM_FIELDS: Record<string, FormFieldDef[]> = {
     mockup_generator: MOCKUP_FIELDS,
     infographic: INFOGRAPHIC_FIELDS,
 
-    // Social Media
+    // Social Media (Instagram + Facebook only)
     instagram_post: INSTAGRAM_POST_FIELDS,
     instagram_story: INSTAGRAM_STORY_FIELDS,
     instagram_reel: INSTAGRAM_REEL_FIELDS,
@@ -997,50 +997,27 @@ export const FORM_FIELDS: Record<string, FormFieldDef[]> = {
     instagram_bio: INSTAGRAM_BIO_FIELDS,
     facebook_post: FACEBOOK_POST_FIELDS,
     facebook_ad_copy: FACEBOOK_AD_COPY_FIELDS,
-    linkedin_post: LINKEDIN_POST_FIELDS,
-    linkedin_article: LINKEDIN_ARTICLE_FIELDS,
-    linkedin_ad: LINKEDIN_AD_FIELDS,
-    twitter_tweet: TWITTER_TWEET_FIELDS,
-    twitter_thread: TWITTER_THREAD_FIELDS,
-    twitter_ad: TWITTER_AD_FIELDS,
-    pinterest_pin: PINTEREST_PIN_FIELDS,
-    pinterest_ad: PINTEREST_AD_FIELDS,
-    tiktok_script: TIKTOK_SCRIPT_FIELDS,
-    tiktok_trend: TIKTOK_TREND_FIELDS,
-    tiktok_ad: TIKTOK_AD_FIELDS,
 
     // Video & Motion
     video_ad_script: VIDEO_FIELDS,
     youtube_script: VIDEO_FIELDS,
     ai_video_gen: VIDEO_FIELDS,
-    video_summarizer: VIDEO_FIELDS,
-    caption_generator: VIDEO_FIELDS,
     thumbnail_idea: THUMBNAIL_IDEA_FIELDS,
-    video_trend_analyzer: VIDEO_FIELDS,
 
     // Content & Copy
     blog_post: BLOG_FIELDS,
     email_campaign: NEWSLETTER_FIELDS,
-    content_strategy: CONTENT_STRATEGY_FIELDS,
     newsletter: NEWSLETTER_FIELDS,
     landing_page: LANDING_PAGE_FIELDS,
-    case_study: CASE_STUDY_FIELDS,
-    press_release: PRESS_RELEASE_FIELDS,
-    whitepaper: WHITEPAPER_FIELDS,
     product_description: PRODUCT_DESCRIPTION_FIELDS,
     faq_generator: FAQ_GENERATOR_FIELDS,
     sms_marketing: SMS_MARKETING_FIELDS,
-    content_audit: CONTENT_AUDIT_FIELDS,
 
     // Advertising Copy
     meta_ads: AD_COPY_FIELDS,
     google_search_ads: AD_COPY_FIELDS,
     google_display_ads: AD_COPY_FIELDS,
-    linkedin_lead_gen: AD_COPY_FIELDS,
-    pinterest_ads: AD_COPY_FIELDS,
-    tiktok_ads: AD_COPY_FIELDS,
     youtube_ads: AD_COPY_FIELDS,
-    amazon_ppc: AD_COPY_FIELDS,
 
     // SEO & AEO
     keyword_researcher: SEO_FIELDS,
@@ -1048,22 +1025,7 @@ export const FORM_FIELDS: Record<string, FormFieldDef[]> = {
     technical_seo: TECHNICAL_SEO_FIELDS,
     aeo_optimizer: AEO_OPTIMIZER_FIELDS,
 
-    // Audio & Podcast
-    podcast_script: AUDIO_FIELDS,
-    podcast_description: AUDIO_FIELDS,
-
-    // Growth & Strategy
-    pricing_strategy: PRICING_STRATEGY_FIELDS,
-    launch_strategy: LAUNCH_STRATEGY_FIELDS,
-    cold_email: COLD_EMAIL_FIELDS,
-    email_sequence: EMAIL_SEQUENCE_FIELDS,
-    page_cro: PAGE_CRO_FIELDS,
-    ab_test_setup: AB_TEST_FIELDS,
-    marketing_psychology: MARKETING_PSYCHOLOGY_FIELDS,
-    competitor_alternatives: COMPETITOR_ALTERNATIVES_FIELDS,
+    // Intelligence (new — Phase 3)
     competitor_intelligence: COMPETITOR_INTELLIGENCE_FIELDS,
     trend_scanner: TREND_SCANNER_FIELDS,
-    seo_audit: SEO_AUDIT_FIELDS,
-    schema_markup: SCHEMA_MARKUP_FIELDS,
-    referral_program: REFERRAL_PROGRAM_FIELDS,
 };

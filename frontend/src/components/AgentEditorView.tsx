@@ -43,61 +43,33 @@ import { BrandGuardianOutput } from './Core/agents/BrandGuardianOutput';
 import { CampaignConceptOutput } from './Core/agents/CampaignConceptOutput';
 import { ContentCalendarOutput } from './Core/agents/ContentCalendarOutput';
 import { ImageGeneratorOutput } from './Core/agents/ImageGeneratorOutput';
-import { GrowthOutput } from './Core/agents/GrowthOutput';
-import { ColdEmailOutput } from './Core/agents/ColdEmailOutput';
-import EmailSequenceOutput from './Core/agents/EmailSequenceOutput';
-import { LaunchStrategyOutput } from './Core/agents/LaunchStrategyOutput';
 import { ContentOutput } from './Core/agents/ContentOutput';
 import { VideoScriptOutput } from './Core/agents/VideoScriptOutput';
 import { AdCopyOutput } from './Core/agents/AdCopyOutput';
 import { CreativeDirectionOutput } from './Core/agents/CreativeDirectionOutput';
 import { ImageEditorOutput } from './Core/agents/ImageEditorOutput';
 import { InfographicOutput } from './Core/agents/InfographicOutput';
-import { PodcastAudioOutput } from './Core/agents/PodcastAudioOutput';
-import { PricingStrategyOutput } from './Core/agents/PricingStrategyOutput';
-import { PageCROOutput } from './Core/agents/PageCROOutput';
-import { ABTestSetupOutput } from './Core/agents/ABTestSetupOutput';
-import { MarketingPsychologyOutput } from './Core/agents/MarketingPsychologyOutput';
-import { ContentStrategyOutput } from './Core/agents/ContentStrategyOutput';
-import { CompetitorAlternativesOutput } from './Core/agents/CompetitorAlternativesOutput';
 import { CompetitorIntelligenceOutput } from './Core/agents/CompetitorIntelligenceOutput';
 import { TrendScannerOutput } from './Core/agents/TrendScannerOutput';
-import { SEOAuditOutput } from './Core/agents/SEOAuditOutput';
-import { SchemaMarkupOutput } from './Core/agents/SchemaMarkupOutput';
-import ReferralProgramOutput from './Core/agents/ReferralProgramOutput';
-// B6: Individual Content & Copy output components
+// Individual Content & Copy output components
 import { BlogPostOutput } from './Core/agents/BlogPostOutput';
 import { EmailCampaignOutput } from './Core/agents/EmailCampaignOutput';
 import { NewsletterOutput } from './Core/agents/NewsletterOutput';
 import { LandingPageOutput } from './Core/agents/LandingPageOutput';
-import { CaseStudyOutput } from './Core/agents/CaseStudyOutput';
-import { PressReleaseOutput } from './Core/agents/PressReleaseOutput';
-import { WhitepaperOutput } from './Core/agents/WhitepaperOutput';
 import { ProductDescriptionOutput } from './Core/agents/ProductDescriptionOutput';
 import { FaqGeneratorOutput } from './Core/agents/FaqGeneratorOutput';
 import { SmsMarketingOutput } from './Core/agents/SmsMarketingOutput';
-import { ContentAuditOutput } from './Core/agents/ContentAuditOutput';
-// B6: Individual Advertising output components
+// Individual Advertising output components
 import { MetaAdsOutput } from './Core/agents/MetaAdsOutput';
 import { GoogleSearchAdsOutput } from './Core/agents/GoogleSearchAdsOutput';
 import { GoogleDisplayAdsOutput } from './Core/agents/GoogleDisplayAdsOutput';
-import { LinkedInLeadGenOutput } from './Core/agents/LinkedInLeadGenOutput';
-import { PinterestAdsOutput } from './Core/agents/PinterestAdsOutput';
-import { TikTokAdsOutput } from './Core/agents/TikTokAdsOutput';
 import { YouTubeAdsOutput } from './Core/agents/YouTubeAdsOutput';
-import { AmazonPPCOutput } from './Core/agents/AmazonPPCOutput';
-// B6: Individual Video & Motion output components
+// Individual Video & Motion output components
 import { VideoAdScriptOutput } from './Core/agents/VideoAdScriptOutput';
 import { YouTubeScriptOutput } from './Core/agents/YouTubeScriptOutput';
 import { AiVideoGenOutput } from './Core/agents/AiVideoGenOutput';
-import { VideoSummarizerOutput } from './Core/agents/VideoSummarizerOutput';
-import { CaptionGeneratorOutput } from './Core/agents/CaptionGeneratorOutput';
 import { ThumbnailIdeaOutput } from './Core/agents/ThumbnailIdeaOutput';
-import { VideoTrendAnalyzerOutput } from './Core/agents/VideoTrendAnalyzerOutput';
-// B6: Individual Audio output components
-import { PodcastScriptOutput } from './Core/agents/PodcastScriptOutput';
-import { PodcastDescriptionOutput } from './Core/agents/PodcastDescriptionOutput';
-// B6: Individual Social Media output components
+// Individual Social Media output components (Instagram + Facebook only)
 import { InstagramPostOutput } from './Core/agents/InstagramPostOutput';
 import { InstagramStoryOutput } from './Core/agents/InstagramStoryOutput';
 import { InstagramReelOutput } from './Core/agents/InstagramReelOutput';
@@ -105,17 +77,6 @@ import { InstagramCarouselOutput } from './Core/agents/InstagramCarouselOutput';
 import { InstagramBioOutput } from './Core/agents/InstagramBioOutput';
 import { FacebookPostOutput } from './Core/agents/FacebookPostOutput';
 import { FacebookAdCopyOutput } from './Core/agents/FacebookAdCopyOutput';
-import { LinkedInPostOutput } from './Core/agents/LinkedInPostOutput';
-import { LinkedInArticleOutput } from './Core/agents/LinkedInArticleOutput';
-import { LinkedInAdOutput } from './Core/agents/LinkedInAdOutput';
-import { TwitterTweetOutput } from './Core/agents/TwitterTweetOutput';
-import { TwitterThreadOutput } from './Core/agents/TwitterThreadOutput';
-import { TwitterAdOutput } from './Core/agents/TwitterAdOutput';
-import { PinterestPinOutput } from './Core/agents/PinterestPinOutput';
-import { PinterestAdSocialOutput } from './Core/agents/PinterestAdSocialOutput';
-import { TikTokScriptOutput } from './Core/agents/TikTokScriptOutput';
-import { TikTokTrendOutput } from './Core/agents/TikTokTrendOutput';
-import { TikTokAdSocialOutput } from './Core/agents/TikTokAdSocialOutput';
 /* ─────────────────────────────────────── */
 /* Status badge                            */
 /* ─────────────────────────────────────── */
@@ -326,113 +287,74 @@ export default function AgentEditorView() {
     }, [versions, activeVersionIdx, output]);
 
     const hideEditorAgents = useMemo(() => new Set([
-        'brand_naming', 'target_audience', 'tagline_slogan',
-        'keyword_researcher', 'on_page_seo', 'technical_seo', 'aeo_optimizer', 'seo_audit',
-        'brand_identity', 'brand_voice', 'brand_guardian',
+        // Brand
+        'brand_identity', 'brand_naming', 'tagline_slogan', 'target_audience', 'brand_voice', 'brand_guardian',
+        // Strategy
         'creative_direction', 'campaign_concept', 'content_calendar',
+        // Visual
         'logo_designer', 'hero_image', 'ad_creative', 'product_photoshoot', 'mockup_generator', 'image_generator', 'image_editor', 'infographic',
-        'pricing_strategy', 'launch_strategy', 'content_strategy', 'marketing_ideas', 'marketing_psychology',
-        'analytics_tracking', 'free_tool_strategy', 'product_marketing_context', 'copywriting', 'social_content',
-        'paid_ads', 'site_architecture', 'schema_markup', 'ai_seo', 'competitor_alternatives', 'competitor_intelligence', 'trend_scanner', 'programmatic_seo',
-        'ab_test_setup', 'form_cro', 'onboarding_cro', 'paywall_upgrade_cro', 'popup_cro', 'signup_flow_cro',
-        'churn_prevention', 'email_sequence', 'referral_program', 'revops', 'sales_enablement',
-        'growth_strategy', 'meta_ads', 'google_search_ads', 'google_display_ads', 'linkedin_lead_gen', 'pinterest_ads', 'tiktok_ads', 'youtube_ads', 'amazon_ppc',
-        'podcast_script', 'podcast_description', 'video_summarizer',
-        'cold_email', 'page_cro',
-        'blog_post', 'email_campaign', 'newsletter', 'landing_page', 'case_study', 'press_release', 'whitepaper', 'product_description', 'faq_generator', 'sms_marketing', 'content_audit',
-        'video_ad_script', 'youtube_script', 'ai_video_gen', 'video_trend_analyzer', 'caption_generator', 'thumbnail_idea',
+        // Video
+        'video_ad_script', 'youtube_script', 'ai_video_gen', 'thumbnail_idea',
+        // Content & Copy
+        'blog_post', 'email_campaign', 'newsletter', 'landing_page', 'product_description', 'faq_generator', 'sms_marketing',
+        // Ads
+        'meta_ads', 'google_search_ads', 'google_display_ads', 'youtube_ads',
+        // SEO
+        'keyword_researcher', 'on_page_seo', 'technical_seo', 'aeo_optimizer',
+        // Intelligence (Phase 3)
+        'competitor_intelligence', 'trend_scanner',
     ]), []);
 
 
     const renderStructuredOutput = () => {
         if (!structuredOutput || isSocialAgent) return null;
         switch (agentId) {
+            // Brand
             case 'brand_naming': return <BrandNamingOutput data={structuredOutput} />;
             case 'target_audience': return <TargetAudienceOutput data={structuredOutput} />;
             case 'tagline_slogan': return <TaglineOutput data={structuredOutput} />;
-            case 'keyword_researcher': return <KeywordResearcherOutput data={structuredOutput} />;
-            case 'on_page_seo': return <OnPageSEOOutput data={structuredOutput} />;
-            case 'technical_seo': return <TechnicalSEOOutput data={structuredOutput} />;
-            case 'aeo_optimizer': return <AeoOptimizerOutput data={structuredOutput} />;
             case 'brand_voice': return <BrandVoiceOutput data={structuredOutput} />;
             case 'brand_guardian': return <BrandGuardianOutput data={structuredOutput} />;
+            // Strategy
             case 'creative_direction': return <CreativeDirectionOutput data={structuredOutput} />;
             case 'campaign_concept': return <CampaignConceptOutput data={structuredOutput} />;
             case 'content_calendar': return <ContentCalendarOutput data={structuredOutput} />;
+            // Visual
             case 'logo_designer': return <LogoDesignerOutput images={mediaItems} status={status as 'draft' | 'final'} data={{ ...(structuredOutput || {}), assets: mediaItems }} />;
             case 'image_generator': return <ImageGeneratorOutput data={{ ...(structuredOutput || {}), assets: mediaItems }} />;
+            case 'hero_image': return <HeroImageOutput data={{ ...(structuredOutput || {}), assets: mediaItems }} />;
+            case 'ad_creative': return <AdCreativeOutput data={{ ...(structuredOutput || {}), assets: mediaItems }} />;
+            case 'product_photoshoot': return <ProductPhotoshootOutput data={{ ...(structuredOutput || {}), assets: mediaItems }} />;
             case 'image_editor': return <ImageEditorOutput data={{ ...(structuredOutput || {}), assets: mediaItems }} />;
+            case 'mockup_generator': return <MockupGeneratorOutput data={{ ...(structuredOutput || {}), assets: mediaItems }} />;
             case 'infographic': return <InfographicOutput data={{ ...(structuredOutput || {}), assets: mediaItems }} />;
-            case 'cold_email':
-                return <ColdEmailOutput data={structuredOutput} />;
-            case 'email_sequence':
-                return <EmailSequenceOutput data={structuredOutput} />;
-            case 'pricing_strategy': return <PricingStrategyOutput data={structuredOutput} />;
-            case 'content_strategy': return <ContentStrategyOutput data={structuredOutput} />;
-            case 'marketing_psychology': return <MarketingPsychologyOutput data={structuredOutput} />;
-            case 'schema_markup': return <SchemaMarkupOutput data={structuredOutput} />;
-            case 'competitor_alternatives': return <CompetitorAlternativesOutput data={structuredOutput} />;
-            case 'competitor_intelligence': return <CompetitorIntelligenceOutput data={structuredOutput} />;
-            case 'trend_scanner': return <TrendScannerOutput data={structuredOutput} />;
-            case 'ab_test_setup': return <ABTestSetupOutput data={structuredOutput} />;
-            case 'page_cro': return <PageCROOutput data={structuredOutput} />;
-            case 'referral_program': return <ReferralProgramOutput data={structuredOutput} />;
-            case 'seo_audit': return <SEOAuditOutput data={structuredOutput} />;
-            case 'marketing_ideas':
-            case 'analytics_tracking':
-            case 'free_tool_strategy':
-            case 'product_marketing_context':
-            case 'copywriting':
-            case 'social_content':
-            case 'paid_ads':
-            case 'site_architecture':
-            case 'ai_seo':
-            case 'programmatic_seo':
-            case 'form_cro':
-            case 'onboarding_cro':
-            case 'paywall_upgrade_cro':
-            case 'popup_cro':
-            case 'signup_flow_cro':
-            case 'churn_prevention':
-            case 'revops':
-            case 'sales_enablement':
-            case 'growth_strategy':
-                return <GrowthOutput data={structuredOutput} />;
-            case 'launch_strategy':
-                return <LaunchStrategyOutput data={structuredOutput} />;
+            // Video & Motion
+            case 'video_ad_script': return <VideoAdScriptOutput data={structuredOutput} />;
+            case 'youtube_script': return <YouTubeScriptOutput data={structuredOutput} />;
+            case 'ai_video_gen': return <AiVideoGenOutput data={{ ...(structuredOutput || {}), assets: mediaItems }} />;
+            case 'thumbnail_idea': return <ThumbnailIdeaOutput data={{ ...(structuredOutput || {}), assets: mediaItems }} />;
+            // Content & Copy
             case 'blog_post': return <BlogPostOutput data={structuredOutput} />;
             case 'email_campaign': return <EmailCampaignOutput data={structuredOutput} />;
             case 'newsletter': return <NewsletterOutput data={structuredOutput} />;
             case 'landing_page': return <LandingPageOutput data={structuredOutput} />;
-            case 'case_study': return <CaseStudyOutput data={structuredOutput} />;
-            case 'press_release': return <PressReleaseOutput data={structuredOutput} />;
-            case 'whitepaper': return <WhitepaperOutput data={structuredOutput} />;
             case 'product_description': return <ProductDescriptionOutput data={structuredOutput} />;
             case 'faq_generator': return <FaqGeneratorOutput data={structuredOutput} />;
             case 'sms_marketing': return <SmsMarketingOutput data={structuredOutput} />;
-            case 'content_audit': return <ContentAuditOutput data={structuredOutput} />;
-            case 'video_ad_script': return <VideoAdScriptOutput data={structuredOutput} />;
-            case 'youtube_script': return <YouTubeScriptOutput data={structuredOutput} />;
-            case 'ai_video_gen': return <AiVideoGenOutput data={{ ...(structuredOutput || {}), assets: mediaItems }} />;
-            case 'video_trend_analyzer': return <VideoTrendAnalyzerOutput data={structuredOutput} />;
-            case 'caption_generator': return <CaptionGeneratorOutput data={structuredOutput} />;
-            case 'thumbnail_idea': return <ThumbnailIdeaOutput data={{ ...(structuredOutput || {}), assets: mediaItems }} />;
-            case 'podcast_script': return <PodcastScriptOutput data={structuredOutput} />;
-            case 'podcast_description': return <PodcastDescriptionOutput data={structuredOutput} />;
-            case 'video_summarizer': return <VideoSummarizerOutput data={structuredOutput} />;
-            case 'hero_image': return <HeroImageOutput data={{ ...(structuredOutput || {}), assets: mediaItems }} />;
-            case 'ad_creative': return <AdCreativeOutput data={{ ...(structuredOutput || {}), assets: mediaItems }} />;
-            case 'product_photoshoot': return <ProductPhotoshootOutput data={{ ...(structuredOutput || {}), assets: mediaItems }} />;
-            case 'mockup_generator': return <MockupGeneratorOutput data={{ ...(structuredOutput || {}), assets: mediaItems }} />;
+            // Ads
             case 'meta_ads': return <MetaAdsOutput data={structuredOutput} />;
             case 'google_search_ads': return <GoogleSearchAdsOutput data={structuredOutput} />;
             case 'google_display_ads': return <GoogleDisplayAdsOutput data={structuredOutput} />;
-            case 'linkedin_lead_gen': return <LinkedInLeadGenOutput data={structuredOutput} />;
-            case 'pinterest_ads': return <PinterestAdsOutput data={structuredOutput} />;
-            case 'facebook_ad_copy': return <FacebookAdCopyOutput data={structuredOutput} />;
-            case 'tiktok_ads': return <TikTokAdsOutput data={structuredOutput} />;
             case 'youtube_ads': return <YouTubeAdsOutput data={structuredOutput} />;
-            case 'amazon_ppc': return <AmazonPPCOutput data={structuredOutput} />;
+            case 'facebook_ad_copy': return <FacebookAdCopyOutput data={structuredOutput} />;
+            // SEO
+            case 'keyword_researcher': return <KeywordResearcherOutput data={structuredOutput} />;
+            case 'on_page_seo': return <OnPageSEOOutput data={structuredOutput} />;
+            case 'technical_seo': return <TechnicalSEOOutput data={structuredOutput} />;
+            case 'aeo_optimizer': return <AeoOptimizerOutput data={structuredOutput} />;
+            // Intelligence (Phase 3)
+            case 'competitor_intelligence': return <CompetitorIntelligenceOutput data={structuredOutput} />;
+            case 'trend_scanner': return <TrendScannerOutput data={structuredOutput} />;
             default: break;
         }
         if (outputIncludesText) return <SmartOutput data={structuredOutput} />;
