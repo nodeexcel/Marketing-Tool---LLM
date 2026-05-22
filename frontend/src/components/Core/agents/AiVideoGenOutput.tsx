@@ -7,10 +7,26 @@ interface Props {
     compact?: boolean;
 }
 
+// Normalize either shape:
+//   {asset_type, gcs_url, prompt_used, ...}  (raw from agent output)
+//   {type, url}                              (flattened mediaItems from AgentEditorView)
+const normalizeAsset = (a: any) => {
+    if (!a) return null;
+    const url = a.gcs_url || a.url;
+    if (!url) return null;
+    const assetType = a.asset_type || a.type || (url.endsWith('.mp4') || url.endsWith('.mov') || url.endsWith('.webm') ? 'video' : 'image');
+    return {
+        gcs_url: url,
+        asset_type: assetType,
+        prompt_used: a.prompt_used,
+    };
+};
+
 export const AiVideoGenOutput: React.FC<Props> = ({ data, compact = false }) => {
     if (!data) return null;
 
-    const assets = data.assets || [];
+    const rawAssets = data.assets || [];
+    const assets = rawAssets.map(normalizeAsset).filter(Boolean);
     const sections = data.sections || [];
     const recommendations = data.recommendations || [];
     const actionItems = data.action_items || [];

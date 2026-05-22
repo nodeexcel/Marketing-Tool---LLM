@@ -39,7 +39,10 @@ class Settings(BaseSettings):
     # Black Forest Labs (Flux) — image generation (replaces Imagen)
     flux_api_key: str = Field("", env="FLUX_API_KEY")
 
-    # Google AI (still used for Imagen image gen + Veo video — to be swapped later)
+    # Google AI — used for Veo video generation via the Gemini API path.
+    # GOOGLE_API_KEY is the key Blake provided; gemini_api_key is the legacy
+    # alias still read by some older code paths.
+    google_api_key: str = Field("", env="GOOGLE_API_KEY")
     gemini_api_key: str = Field("", env="GEMINI_API_KEY")
     google_cloud_project: str = Field("", env="GOOGLE_CLOUD_PROJECT")
     google_cloud_location: str = Field("us-central1", env="GOOGLE_CLOUD_LOCATION")

@@ -23,8 +23,19 @@ _client: genai.Client | None = None
 
 
 def _get_client() -> genai.Client:
-    """Return the Gemini client — used by Imagen/Veo/audio services."""
+    """Return the Google genai client — used by Veo video generation.
+
+    Prefers GOOGLE_API_KEY (what Blake provided for Veo); falls back to
+    GEMINI_API_KEY for backward compatibility with older env files.
+    """
     global _client
     if _client is None:
-        _client = genai.Client(api_key=settings.gemini_api_key)
+        api_key = settings.google_api_key or settings.gemini_api_key
+        if not api_key:
+            raise RuntimeError(
+                "Neither GOOGLE_API_KEY nor GEMINI_API_KEY is set — Veo video "
+                "generation needs one of them in .env"
+            )
+        _client = genai.Client(api_key=api_key)
+        print(f"[VEO/GENAI] Client initialized with key prefix: {api_key[:10]}…", flush=True)
     return _client
