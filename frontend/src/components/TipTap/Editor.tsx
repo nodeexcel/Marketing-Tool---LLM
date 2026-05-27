@@ -74,32 +74,32 @@ export default function MarketingEditor({ initialContent = '<p>Start writing you
             {/* Standard Toolbar */}
             <div className="flex items-center gap-1 p-2 border-b border-[var(--border-default)] bg-[var(--bg-secondary)] flex-wrap">
                 <button
-                    onClick={() => editor.chain().focus().toggleBold().run()}
+                    onClick={() => ((editor.chain() as any).focus().toggleBold().run())}
                     className={`p-2 rounded hover:bg-[var(--bg-primary)] ${editor.isActive('bold') ? 'text-[var(--primary)] bg-[var(--bg-primary)]' : 'text-[var(--text-secondary)]'}`}
                 >
                     <Bold size={16} />
                 </button>
                 <button
-                    onClick={() => editor.chain().focus().toggleItalic().run()}
+                    onClick={() => ((editor.chain() as any).focus().toggleItalic().run())}
                     className={`p-2 rounded hover:bg-[var(--bg-primary)] ${editor.isActive('italic') ? 'text-[var(--primary)] bg-[var(--bg-primary)]' : 'text-[var(--text-secondary)]'}`}
                 >
                     <Italic size={16} />
                 </button>
                 <div className="w-px h-5 bg-[var(--border-default)] mx-1" />
                 <button
-                    onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+                    onClick={() => ((editor.chain() as any).focus().toggleHeading({ level: 2 }).run())}
                     className={`p-2 rounded hover:bg-[var(--bg-primary)] ${editor.isActive('heading', { level: 2 }) ? 'text-[var(--primary)] bg-[var(--bg-primary)]' : 'text-[var(--text-secondary)]'}`}
                 >
                     <Type size={16} />
                 </button>
                 <button
-                    onClick={() => editor.chain().focus().toggleBulletList().run()}
+                    onClick={() => ((editor.chain() as any).focus().toggleBulletList().run())}
                     className={`p-2 rounded hover:bg-[var(--bg-primary)] ${editor.isActive('bulletList') ? 'text-[var(--primary)] bg-[var(--bg-primary)]' : 'text-[var(--text-secondary)]'}`}
                 >
                     <List size={16} />
                 </button>
                 <button
-                    onClick={() => editor.chain().focus().toggleOrderedList().run()}
+                    onClick={() => ((editor.chain() as any).focus().toggleOrderedList().run())}
                     className={`p-2 rounded hover:bg-[var(--bg-primary)] ${editor.isActive('orderedList') ? 'text-[var(--primary)] bg-[var(--bg-primary)]' : 'text-[var(--text-secondary)]'}`}
                 >
                     <ListOrdered size={16} />

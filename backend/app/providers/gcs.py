@@ -54,7 +54,7 @@ async def upload_bytes(
         with open(local_path, "wb") as f:
             f.write(data)
         
-        local_url = f"http://localhost:{settings.port}/assets/{filename}"
+        local_url = f"{settings.backend_url}/assets/{filename}"
         logger.info("Saved %s to local fallback: %s", asset_type, local_path)
         return {"gcs_path": filename, "gcs_url": local_url}
 
@@ -93,7 +93,7 @@ async def upload_file(
         local_path = os.path.join("assets", filename)
         shutil.copy2(file_path, local_path)
         
-        local_url = f"http://localhost:{settings.port}/assets/{filename}"
+        local_url = f"{settings.backend_url}/assets/{filename}"
         logger.info("Saved file %s to local fallback: %s", file_path, local_path)
         return {"gcs_path": filename, "gcs_url": local_url}
 
@@ -117,7 +117,7 @@ async def get_signed_url(gcs_path: str, expiration_hours: int = 24 * 7) -> str:
     """Generate a URL for an existing GCS object (public or signed)."""
     if not _is_gcs_configured():
         # It's a local file in the assets directory
-        return f"http://localhost:{settings.port}/assets/{gcs_path}"
+        return f"{settings.backend_url}/assets/{gcs_path}"
 
     bucket = _get_bucket()
     blob = bucket.blob(gcs_path)

@@ -1,3 +1,5 @@
+import type { LucideProps } from 'lucide-react';
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import {
     Compass, Database,
     Fingerprint, Type, Quote, Users, Shield,
@@ -9,7 +11,23 @@ import {
     Telescope, Radar
 } from 'lucide-react';
 
-export const AGENT_CATEGORIES = [
+export interface AgentItem {
+    name: string;
+    id: string;
+    icon: ForwardRefExoticComponent<Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>>;
+    desc: string;
+    badge?: string;
+    outputMode?: string;
+}
+
+export interface AgentCategory {
+    title: string;
+    description: string;
+    color: string;
+    agents: AgentItem[];
+}
+
+export const AGENT_CATEGORIES: AgentCategory[] = [
     {
         title: 'Brand Identity',
         description: 'Establish and protect brand DNA.',

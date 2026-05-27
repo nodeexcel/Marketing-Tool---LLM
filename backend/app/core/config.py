@@ -56,6 +56,9 @@ class Settings(BaseSettings):
     # If true, upload objects as public and return permanent URLs
     gcs_public_read: bool = Field(False, env="GCS_PUBLIC_READ")
 
+    # Public backend URL for local asset fallback.
+    backend_public_url: str = Field("http://localhost:8002", env="BACKEND_PUBLIC_URL")
+
     # ── Model tiers (overridable) ───────────────────────────────────────────────
     # Text generation now uses Anthropic Claude (Phase 2 swap).
     # Override via MODEL_TEXT env var — e.g. claude-sonnet-4-6 for cheaper runs.
@@ -74,6 +77,11 @@ class Settings(BaseSettings):
         extra="ignore",
         case_sensitive=False,
     )
+
+    @property
+    def backend_url(self) -> str:
+        """Public base URL for backend-hosted assets."""
+        return self.backend_public_url.rstrip("/")
 
 
 settings = Settings()

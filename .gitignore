@@ -54,3 +54,4 @@ ai-interview
 *.log
 
 backend/_clean_stale_prompts.py
+.omc

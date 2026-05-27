@@ -443,7 +443,7 @@ export default function DeckCardNode({ data, selected }: { data: DeckCardData; s
             <div style={{ padding: '26px 28px 22px', minHeight: 220 }}>
                 {showMediaPreview ? (
                     <div style={{ borderRadius: 20, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.12)', marginBottom: data.text_preview ? 20 : 0, boxShadow: '0 14px 42px rgba(0,0,0,0.38)' }}>
-                        <MediaSlider items={data.mediaItems} />
+                        <MediaSlider items={data.mediaItems ?? []} />
                     </div>
                 ) : showThumbnail ? (
                     <div style={{ borderRadius: 20, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.12)', marginBottom: data.text_preview ? 20 : 0, boxShadow: '0 14px 42px rgba(0,0,0,0.38)' }}>
