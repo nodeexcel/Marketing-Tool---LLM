@@ -143,7 +143,7 @@ export default function WorkspaceGate() {
                         marginRight: 'auto'
                     }} />
                     <h1 style={{ fontSize: 26, fontWeight: 800, color: 'var(--text-primary)', marginBottom: 8 }}>
-                        Welcome to <span style={{ background: 'var(--gradient-accent)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>MarketingAI Studio</span>
+                        Welcome to <span style={{ background: 'var(--gradient-accent)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Advinc</span>
                     </h1>
                     <p style={{ color: 'var(--text-secondary)', fontSize: 15 }}>
                         {workspaces.length > 0

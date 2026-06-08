@@ -1,7 +1,7 @@
 import React from 'react';
 
 /**
- * MarketingAI Application Logo
+ * Advinc Application Logo
  */
 export const AppLogo = ({ size = 24, className = "", style = {} }: { size?: number, className?: string, style?: React.CSSProperties }) => (
     <svg

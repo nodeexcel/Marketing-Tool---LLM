@@ -6,7 +6,7 @@ General-purpose marketing images — hero shots, backgrounds, illustrations.
 from google.adk.agents import LlmAgent
 from app.tools.media_tools import generate_marketing_image
 
-INSTRUCTION = """You are the Image Generation Agent for MarketingAI Studio.
+INSTRUCTION = """You are the Image Generation Agent for Advinc.
 
 You create high-quality marketing images: hero shots, backgrounds, illustrations, banners,
 and any visual content needed for marketing campaigns.

@@ -1,4 +1,4 @@
-# Marketing AI Studio — runtime dependencies
+# Advinc — runtime dependencies
 # Cleaned from the original pip-freeze dump (which included torch, jupyter, streamlit, etc.)
 # Phase 1: minimum needed for the server to start. Phase 2 swap will trim google-* libs.
 

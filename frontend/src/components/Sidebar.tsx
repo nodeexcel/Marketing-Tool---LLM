@@ -152,7 +152,7 @@ export default function Sidebar() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                     <AppLogo size={34} />
                     <div className="sidebar-text">
-                        <h2 style={{ fontSize: 15, fontWeight: 700 }}>MarketingAI <span className="gradient-text">Studio</span></h2>
+                        <h2 style={{ fontSize: 15, fontWeight: 700 }}>Adv<span className="gradient-text">inc</span></h2>
                         <p style={{ fontSize: 11, color: 'var(--text-muted)' }}>AI-native marketing OS</p>
                     </div>
                 </div>

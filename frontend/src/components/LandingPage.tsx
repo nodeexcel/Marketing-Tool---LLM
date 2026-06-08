@@ -44,7 +44,7 @@ export default function LandingPage() {
                     </div>
                     <div className="hide-on-mobile">
                         <h1 style={{ fontSize: 18, fontWeight: 800, letterSpacing: '-0.5px' }}>
-                            MarketingAI <span className="gradient-text">Studio</span>
+                            Adv<span className="gradient-text">inc</span>
                         </h1>
                     </div>
                 </div>
@@ -90,7 +90,7 @@ export default function LandingPage() {
                 }}>
                     <Bot size={16} color="var(--accent-1)" />
                     <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--accent-1)', textTransform: 'uppercase', letterSpacing: 1 }}>
-                        The Ultimate MarketingAI Studio
+The Ultimate AI Marketing Platform
                     </span>
                 </div>
 

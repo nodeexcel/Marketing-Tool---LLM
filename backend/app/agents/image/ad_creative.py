@@ -6,7 +6,7 @@ Generates complete ad visuals with text overlay.
 from google.adk.agents import LlmAgent
 from app.tools.media_tools import generate_marketing_image
 
-INSTRUCTION = """You are the Ad Creative Agent for MarketingAI Studio.
+INSTRUCTION = """You are the Ad Creative Agent for Advinc.
 
 You create complete ad visuals with headline, body copy, CTA, and brand elements
 baked directly into the image. This is NOT just an image — it's a ready-to-use ad.

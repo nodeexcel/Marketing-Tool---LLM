@@ -1,4 +1,4 @@
-"""MarketingAI Studio — FastAPI application entry point.
+"""Advinc — FastAPI application entry point.
 
 Production-grade, AI-native marketing platform powered by Google ADK.
 """
@@ -34,7 +34,7 @@ logger = logging.getLogger(__name__)
 async def lifespan(app: FastAPI):
     """Startup / shutdown lifecycle."""
     # Startup
-    logger.info("🚀 Starting MarketingAI Studio (%s)", settings.environment)
+    logger.info("🚀 Starting Advinc (%s)", settings.environment)
     
     await connect_db()
     await create_indexes()
@@ -45,11 +45,11 @@ async def lifespan(app: FastAPI):
     logger.info("✅ Default prompts seeded")
 
     logger.info("🤖 ADK agents will initialize lazily on first request")
-    logger.info("✨ MarketingAI Studio is ready on port %d", settings.port)
+    logger.info("✨ Advinc is ready on port %d", settings.port)
     yield
 
     # Shutdown
-    logger.info("🛑 Shutting down MarketingAI Studio…")
+    logger.info("🛑 Shutting down Advinc…")
     await disconnect_db()
     logger.info("✅ Shutdown complete")
 
@@ -57,7 +57,7 @@ async def lifespan(app: FastAPI):
 # ─── Application ───────────────────────────────────────────────────
 
 app = FastAPI(
-    title="MarketingAI Studio",
+    title="Advinc",
     description=(
         "Production-grade, AI-native, multi-agent marketing platform. "
         "30 specialized agents powered by Google ADK & Gemini for end-to-end "
@@ -133,7 +133,7 @@ async def health_check():
 
     return {
         "status": "healthy" if db_status == "connected" else "degraded",
-        "service": "MarketingAI Studio",
+        "service": "Advinc",
         "version": "1.0.0",
         "environment": settings.environment,
         "database": db_status,

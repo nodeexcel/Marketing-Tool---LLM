@@ -6,7 +6,7 @@ Conversational image editing — change background, make warmer, etc.
 from google.adk.agents import LlmAgent
 from app.tools.media_tools import edit_marketing_image
 
-INSTRUCTION = """You are the Image Editor Agent for MarketingAI Studio.
+INSTRUCTION = """You are the Image Editor Agent for Advinc.
 
 You handle conversational image editing — users describe what they want changed,
 and you apply the edits while preserving everything else.
