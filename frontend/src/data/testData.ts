@@ -124,13 +124,6 @@ const content_calendar = {
 // VISUAL DESIGN (7 agents)
 // ═══════════════════════════════════════════════════════════════
 
-const logo_designer = {
-    brand_name: BRAND.name,
-    styles: ['Wordmark', 'Icon', 'Combination'],
-    icon_concept: 'Ocean wave merged with a heartbeat pulse line',
-    colors: ['#1fb6ff', '#0f172a', '#34d399'],
-    variation_count: 4,
-};
 
 const hero_image = {
     description: 'A runner on a pristine beach at sunrise wearing the GreenPulse Pro band, ocean waves crashing in the background, turquoise and coral color palette, cinematic lighting',
@@ -212,25 +205,6 @@ const instagram_reel = {
     generate_video: true,
 };
 
-const instagram_carousel = {
-    topic: '5-slide carousel: "5 Reasons Your Fitness Tracker Should Be Made from Ocean Plastic" — mix of infographic data and lifestyle shots.',
-    visual_theme: 'Clean editorial with data callouts and ocean imagery',
-    tone_override: 'educational',
-    keywords: ['fitness tips', 'sustainability', 'carousel', 'eco living'],
-    generate_image: true,
-    image_count: 3,
-    generate_video: false,
-};
-
-const instagram_bio = {
-    topic: 'GreenPulse Instagram bio — highlight the brand mission (ocean plastic → fitness gear), include CTA to shop, and mention the #MoveTheOceanForward campaign.',
-    visual_theme: 'Clean, emoji-accented',
-    tone_override: 'promotional',
-    keywords: ['fitness', 'sustainability', 'ocean', 'wearable tech'],
-    generate_image: false,
-    image_count: 1,
-    generate_video: false,
-};
 
 // ═══════════════════════════════════════════════════════════════
 // SOCIAL MEDIA — Facebook (2 agents)
@@ -513,12 +487,6 @@ const faq_generator = {
     audience_selection: 'Pre-order customers and product page visitors',
 };
 
-const sms_marketing = {
-    topic: 'GreenPulse Pro pre-order reminder — 20% early-bird discount ending in 48 hours. Direct link to purchase. Keep it punchy and urgent.',
-    target_length_words: 160,
-    tone_override: 'persuasive',
-    audience_selection: 'Waitlist subscribers who have not yet pre-ordered',
-};
 
 const content_audit = {
     topic: 'Audit GreenPulse\'s existing blog (15 posts on sustainability, fitness, and product updates) — identify content gaps, underperforming posts, SEO opportunities, and recommended content pillars for the Pro launch.',
@@ -781,8 +749,7 @@ export const TEST_DATA: Record<string, Record<string, any>> = {
     campaign_concept,
     content_calendar,
 
-    // Visual Design (7)
-    logo_designer,
+    // Visual Design (6)
     hero_image,
     product_photoshoot,
     ad_creative,
@@ -790,12 +757,10 @@ export const TEST_DATA: Record<string, Record<string, any>> = {
     mockup_generator,
     infographic,
 
-    // Social — Instagram (5)
+    // Social — Instagram (3)
     instagram_post,
     instagram_story,
     instagram_reel,
-    instagram_carousel,
-    instagram_bio,
 
     // Social — Facebook (2)
     facebook_post,
@@ -839,7 +804,6 @@ export const TEST_DATA: Record<string, Record<string, any>> = {
     whitepaper,
     product_description,
     faq_generator,
-    sms_marketing,
     content_audit,
 
     // Advertising Copy (8)

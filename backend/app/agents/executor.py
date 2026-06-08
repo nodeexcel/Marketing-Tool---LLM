@@ -96,9 +96,6 @@ class AgentExecutorCore:
             return ContentCalendarAgent()
 
         # Category 3: Visual
-        elif agent_id == "logo_designer":
-            from app.agents.visual.logo_designer import LogoDesignerAgent
-            return LogoDesignerAgent()
         elif agent_id == "hero_image":
             from app.agents.visual.hero_image import HeroImageAgent
             return HeroImageAgent()
@@ -119,7 +116,7 @@ class AgentExecutorCore:
             return InfographicAgent()
 
         # Category 4: Social Media (Instagram + Facebook only)
-        elif agent_id in ["instagram_post", "instagram_story", "instagram_reel", "instagram_carousel", "instagram_bio"]:
+        elif agent_id in ["instagram_post", "instagram_story", "instagram_reel"]:
             from app.agents.social.instagram_agent import InstagramAgent
             return InstagramAgent()
         elif agent_id in ["facebook_post", "facebook_ad_copy"]:
@@ -138,7 +135,7 @@ class AgentExecutorCore:
         elif agent_id in ["email_campaign", "newsletter"]:
             from app.agents.content.email_agent import EmailAgent
             return EmailAgent()
-        elif agent_id in ["landing_page", "product_description", "faq_generator", "sms_marketing"]:
+        elif agent_id in ["landing_page", "product_description", "faq_generator"]:
             from app.agents.content.copy_utility_agent import CopyUtilityAgent
             return CopyUtilityAgent()
 

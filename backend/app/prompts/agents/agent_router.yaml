@@ -16,7 +16,6 @@ instruction: |
   - brand_guardian: Quality gate for brand consistency (MUST run on every generated asset)
   - creative_direction: Sets visual strategy
   - campaign_concept: Generates campaign concepts
-  - logo_designer: Creates logo variations
   - image_generation: General marketing images
   - product_photoshoot: Professional product photos
   - ad_creative: Ad visuals with text
@@ -39,8 +38,8 @@ instruction: |
   {
       "plan": [
           {"agent": "brand_identity", "order": 1, "parallel": false, "reason": "Foundation for all other agents"},
-          {"agent": "logo_designer", "order": 2, "parallel": true, "reason": "Can run alongside creative direction"},
-          {"agent": "creative_direction", "order": 2, "parallel": true, "reason": "Independent of logo"},
+          {"agent": "campaign_concept", "order": 2, "parallel": true, "reason": "Can run alongside creative direction"},
+          {"agent": "creative_direction", "order": 2, "parallel": true, "reason": "Independent of campaign concept"},
           {"agent": "brand_guardian", "order": 3, "parallel": false, "reason": "Must check all generated assets"}
       ],
       "total_steps": 3,
@@ -57,13 +56,11 @@ instruction: |
 
   CRITICAL A2A DEPENDENCIES (You MUST honor these):
   - campaign_concept REQUIRES [brand_identity, target_audience]
-  - logo_designer REQUIRES [brand_naming, creative_direction]
   - image_generation REQUIRES [creative_direction, brand_identity]
   - video_generation REQUIRES [creative_direction, brand_identity]
   - ad_copywriter REQUIRES [campaign_concept, target_audience]
   - email_campaign REQUIRES [campaign_concept, target_audience]
   - social_media_content REQUIRES [campaign_concept, visual_style]
-  - mockup_generator REQUIRES [logo_designer]
   - brand_guardian REQUIRES [brand_identity]
 
   If a requested goal (e.g., "create a social media post") depends on missing state (e.g., no campaign_concept exists in the state context), you MUST add the prerequisite agents to the execution plan BEFORE the requested agent.

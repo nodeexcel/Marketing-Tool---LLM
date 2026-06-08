@@ -51,14 +51,6 @@ def get_fallback_form_spec(agent_id: str) -> A2UIFormSpec:
             A2UIField(name="price_point", type=A2UIFieldType.RADIO_GROUP, label="Price Point", options=["budget", "mid_range", "premium", "luxury"]),
             A2UIField(name="persona_count", type=A2UIFieldType.SLIDER, label="Number of Personas", min_value=1, max_value=5, default_value=3)
         ]
-    elif agent_id == "logo_designer":
-        fields = [
-            A2UIField(name="brand_name", type=A2UIFieldType.TEXT_INPUT, label="Brand Name", auto_filled=True),
-            A2UIField(name="preferred_styles", type=A2UIFieldType.MULTI_SELECT, label="Logo Styles", options=["wordmark", "lettermark", "icon", "combination", "abstract", "mascot", "emblem"]),
-            A2UIField(name="icon_concept", type=A2UIFieldType.TEXT_INPUT, label="Icon Concept", placeholder="e.g. coffee bean, leaf, sunrise"),
-            A2UIField(name="reference_image", type=A2UIFieldType.FILE_UPLOAD, label="Reference Image (Optional)", accept="image/*"),
-            A2UIField(name="variation_count", type=A2UIFieldType.SLIDER, label="Variations to Generate", min_value=2, max_value=8, default_value=4)
-        ]
     elif agent_id == "hero_image":
         fields = [
             A2UIField(name="description", type=A2UIFieldType.TEXT_AREA, label="Scene Description", placeholder="e.g. A sunrise over coffee plantations", required=True),

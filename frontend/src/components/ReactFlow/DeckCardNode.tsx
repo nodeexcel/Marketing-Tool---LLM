@@ -18,7 +18,7 @@ import {
     Clock, Sparkles, Bot, Zap, Edit3, Fingerprint,
     Type, Quote, Users, Shield, Lightbulb, Target,
     Camera, Layout, Crop, MonitorSmartphone,
-    Mic, Pen, Image as ImageIcon, Database, Maximize, Trash2, Copy, Check, Rocket,
+    Mic, Image as ImageIcon, Database, Maximize, Trash2, Copy, Check, Rocket,
 } from 'lucide-react';
 import { marked } from 'marked';
 import MediaSlider from '../MediaSlider';
@@ -71,14 +71,13 @@ const AGENT_COLORS: Record<string, string> = {
     content_calendar: '#fbbf24', market_research: '#fbbf24',
     launch_strategy: '#fbbf24',
     // Visual
-    logo_designer: '#38bdf8', hero_image: '#38bdf8',
+    hero_image: '#38bdf8',
     product_photoshoot: '#38bdf8', ad_creative: '#38bdf8',
     image_editor: '#38bdf8', mockup_generator: '#38bdf8',
     infographic: '#38bdf8',
     // Social
     instagram_post: '#e879f9', instagram_story: '#e879f9',
-    instagram_reel: '#e879f9', instagram_carousel: '#e879f9',
-    instagram_bio: '#e879f9',
+    instagram_reel: '#e879f9',
     // Content
     blog_writer: '#34d399', seo_optimizer: '#34d399',
     email_campaign: '#34d399', ad_copy: '#34d399',
@@ -96,13 +95,13 @@ const AGENT_ICONS: Record<string, React.ElementType> = {
     tagline_slogan: Quote, target_audience: Users,
     brand_voice: Mic, brand_guardian: Shield,
     creative_direction: Lightbulb, campaign_concept: Target,
-    content_calendar: Database, launch_strategy: Rocket, logo_designer: PenTool,
+    content_calendar: Database, launch_strategy: Rocket,
     hero_image: ImageIcon, product_photoshoot: Camera,
     ad_creative: Layout, image_editor: Crop,
     mockup_generator: MonitorSmartphone, infographic: Database,
     instagram_post: ImageIcon, instagram_story: Sparkles,
-    instagram_reel: Video, instagram_carousel: Layout,
-    instagram_bio: Pen, blog_writer: FileText,
+    instagram_reel: Video,
+    blog_writer: FileText,
     email_campaign: Share2, ad_copy: PenTool,
 };
 
@@ -558,7 +557,7 @@ export default function DeckCardNode({ data, selected }: { data: DeckCardData; s
                     </div>
                 ) : [
                     'blog_post','email_campaign','newsletter','landing_page',
-                    'product_description','faq_generator','sms_marketing'
+                    'product_description','faq_generator'
                 ].includes(data.agent_used || '') && data.structured_data ? (
                     <div
                         style={contentSurface}

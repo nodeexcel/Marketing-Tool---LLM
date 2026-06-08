@@ -175,16 +175,6 @@ const CONTENT_CALENDAR_FIELDS: FormFieldDef[] = [
 // VISUAL DESIGN CATEGORY (8 — each unique)
 // ═══════════════════════════════════════════════════════════
 
-const LOGO_DESIGNER_FIELDS: FormFieldDef[] = [
-    { name: 'brand_name', icon: 'Type', type: 'text', label: 'Brand Name', placeholder: 'Name to feature in the logo', section: 'Logo Details' },
-    { name: 'brand_description', icon: 'FileText', type: 'textarea', label: 'Brand Description', placeholder: 'Describe the brand identity...', rows: 2 },
-    { name: 'usage_context', icon: 'Monitor', type: 'text', label: 'Usage Context', placeholder: 'e.g. Website, Mobile App, Print' },
-    { name: 'styles', icon: 'Shapes', type: 'tags', label: 'Logo Styles', placeholder: 'e.g. Wordmark, Icon, Abstract', max: 4 },
-    { name: 'colors', icon: 'Palette', type: 'colors', label: 'Brand Colors', helpText: 'Pick 2-5 hex colors to enforce in the logo', max: 5 },
-    { name: 'icon_concept', icon: 'Lightbulb', type: 'text', label: 'Icon Concept', placeholder: 'e.g. A mountain, Lightning bolt' },
-    { name: 'variation_count', icon: 'Hash', type: 'number', label: 'Number of Variations', defaultValue: 4, min: 1, max: 4 }
-];
-
 const HERO_IMAGE_FIELDS: FormFieldDef[] = [
     { name: 'description', icon: 'FileText', type: 'textarea', label: 'Image Description', placeholder: 'Describe the hero image you want...', required: true, section: 'Image Details', rows: 3 },
     { name: 'composition', icon: 'Layout', type: 'text', label: 'Composition', placeholder: 'e.g. Rule of thirds, Centered, Dynamic' },
@@ -386,16 +376,6 @@ const INSTAGRAM_REEL_FIELDS: FormFieldDef[] = [
     { name: 'audio_reference', icon: 'Music', type: 'text', label: 'Audio / Trending Sound Ref', placeholder: 'e.g. "Upbeat Lo-fi", "Trending Motivation"' },
     { name: 'shot_list', icon: 'Camera', type: 'textarea', label: 'Shot List / Visual Instructions', placeholder: 'Detail the shots you need...', rows: 2 },
     ...MEDIA_VIDEO_ONLY,
-];
-const INSTAGRAM_CAROUSEL_FIELDS: FormFieldDef[] = [
-    ...INSTAGRAM_BASE,
-    { name: 'slide_count', icon: 'Layers', type: 'number', label: 'Slide Count', defaultValue: 5, min: 2, max: 10 },
-    { name: 'slide_goal', icon: 'Target', type: 'text', label: 'Goal per Slide', placeholder: 'e.g. Educate on X, Tease Y' },
-    { name: 'final_slide_cta', icon: 'Zap', type: 'text', label: 'Final Slide CTA', placeholder: 'e.g. Visit link, DM for info' },
-    ...MEDIA_IMAGE_ONLY,
-];
-const INSTAGRAM_BIO_FIELDS: FormFieldDef[] = [
-    ...INSTAGRAM_BASE,
 ];
 
 const FACEBOOK_BASE: FormFieldDef[] = [
@@ -671,17 +651,6 @@ const FAQ_GENERATOR_FIELDS: FormFieldDef[] = [
         { label: 'Pre-Purchase', value: 'pre-purchase' },
         { label: 'Post-Purchase', value: 'post-purchase' },
         { label: 'Technical Support', value: 'technical' }
-    ]}
-];
-
-const SMS_MARKETING_FIELDS: FormFieldDef[] = [
-    ...CONTENT_FIELDS,
-    { name: 'link_url', icon: 'Link', type: 'url', label: 'Link URL', section: 'SMS Info' },
-    { name: 'character_limit', icon: 'Scissors', type: 'number', label: 'Character Limit', defaultValue: 160 },
-    { name: 'urgency_level', icon: 'AlertTriangle', type: 'select', label: 'Urgency Level', options: [
-        { label: 'Low', value: 'low' },
-        { label: 'Medium', value: 'medium' },
-        { label: 'High / Flash Sale', value: 'high' }
     ]}
 ];
 
@@ -980,7 +949,6 @@ export const FORM_FIELDS: Record<string, FormFieldDef[]> = {
     content_calendar: CONTENT_CALENDAR_FIELDS,
 
     // Visual Design
-    logo_designer: LOGO_DESIGNER_FIELDS,
     hero_image: HERO_IMAGE_FIELDS,
     product_photoshoot: PRODUCT_PHOTOSHOOT_FIELDS,
     ad_creative: AD_CREATIVE_FIELDS,
@@ -993,8 +961,6 @@ export const FORM_FIELDS: Record<string, FormFieldDef[]> = {
     instagram_post: INSTAGRAM_POST_FIELDS,
     instagram_story: INSTAGRAM_STORY_FIELDS,
     instagram_reel: INSTAGRAM_REEL_FIELDS,
-    instagram_carousel: INSTAGRAM_CAROUSEL_FIELDS,
-    instagram_bio: INSTAGRAM_BIO_FIELDS,
     facebook_post: FACEBOOK_POST_FIELDS,
     facebook_ad_copy: FACEBOOK_AD_COPY_FIELDS,
 
@@ -1011,7 +977,6 @@ export const FORM_FIELDS: Record<string, FormFieldDef[]> = {
     landing_page: LANDING_PAGE_FIELDS,
     product_description: PRODUCT_DESCRIPTION_FIELDS,
     faq_generator: FAQ_GENERATOR_FIELDS,
-    sms_marketing: SMS_MARKETING_FIELDS,
 
     // Advertising Copy
     meta_ads: AD_COPY_FIELDS,

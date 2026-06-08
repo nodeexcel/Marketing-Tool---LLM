@@ -123,19 +123,6 @@ BRAND_GUARDIAN_CAPABILITY = AgentCapability(
     model_tier=ModelTier.QUALITY,
 )
 
-LOGO_DESIGNER_CAPABILITY = AgentCapability(
-    agent_id="logo_designer",
-    agent_name="Logo Designer",
-    description="Generates logo concepts in multiple styles: wordmark, icon, combination, abstract",
-    category="visual",
-    reads_from_context=["brand_name", "colors", "visual_style", "mood", "industry"],
-    writes_to_context=["logo_url"],
-    needs_providers=[ProviderCapability.IMAGE_GENERATE, ProviderCapability.TEXT],
-    produces_card_type=CardType.LOGO,
-    output_content_type=ContentType.IMAGE,
-    model_tier=ModelTier.QUALITY,
-)
-
 HERO_IMAGE_CAPABILITY = AgentCapability(
     agent_id="hero_image",
     agent_name="Image Generator",
@@ -461,7 +448,6 @@ AGENT_REGISTRY: Dict[str, AgentCapability] = {
     "brand_voice_analyzer": BRAND_VOICE_CAPABILITY,
     "target_audience": TARGET_AUDIENCE_CAPABILITY,
     "brand_guardian": BRAND_GUARDIAN_CAPABILITY,
-    "logo_designer": LOGO_DESIGNER_CAPABILITY,
     "hero_image": HERO_IMAGE_CAPABILITY,
     "product_photoshoot": PRODUCT_PHOTOSHOOT_CAPABILITY,
     "social_visuals": SOCIAL_VISUALS_CAPABILITY,

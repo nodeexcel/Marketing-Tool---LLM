@@ -50,7 +50,6 @@ def populate_registry():
         CreativeDirectionInput, CreativeDirectionOutput,
         CampaignConceptInput, CampaignConceptOutput,
         ContentCalendarInput, ContentCalendarOutput,
-        LogoDesignerInput, LogoDesignerOutput,
         HeroImageInput, HeroImageOutput,
         ProductPhotoshootInput, ProductPhotoshootOutput,
         AdCreativeInput, AdCreativeOutput,
@@ -124,12 +123,7 @@ def populate_registry():
         category="strategy", icon="Calendar", input_model=ContentCalendarInput, output_model=ContentCalendarOutput, is_implemented=True
     ))
 
-    # 🖼️ CATEGORY 3: VISUAL DESIGN (7)
-    registry.register(AgentMetadata(
-        agent_id="logo_designer", name="Logo Designer",
-        description="Generates professional logo variations based on brand style.",
-        category="visual", icon="Palette", input_model=LogoDesignerInput, output_model=LogoDesignerOutput, is_implemented=True
-    ))
+    # 🖼️ CATEGORY 3: VISUAL DESIGN (6)
     registry.register(AgentMetadata(
         agent_id="hero_image", name="Image Generator",
         description="Creates high-impact banner and hero images.",
@@ -161,8 +155,8 @@ def populate_registry():
         category="visual", icon="BarChart", input_model=InfographicInput, output_model=InfographicOutput, is_implemented=True
     ))
 
-    # 📱 CATEGORY 4: SOCIAL MEDIA (7) — Instagram + Facebook only
-    for aid in ["instagram_post", "instagram_story", "instagram_reel", "instagram_carousel", "instagram_bio"]:
+    # 📱 CATEGORY 4: SOCIAL MEDIA (5) — Instagram + Facebook only
+    for aid in ["instagram_post", "instagram_story", "instagram_reel"]:
         registry.register(AgentMetadata(
             agent_id=aid, name=f"IG {aid.split('_')[1].title()}", description=f"Optimized Instagram {aid.split('_')[1]} content.",
             category="social", icon="Instagram", input_model=InstagramAgentInput, output_model=InstagramAgentOutput, is_implemented=True
@@ -180,8 +174,8 @@ def populate_registry():
             category="video", icon="Video", input_model=VideoScriptInput, output_model=VideoScriptOutput, is_implemented=True
         ))
 
-    # 📝 CATEGORY 6: CONTENT & COPY (7)
-    for aid in ["blog_post", "email_campaign", "newsletter", "landing_page", "product_description", "faq_generator", "sms_marketing"]:
+    # 📝 CATEGORY 6: CONTENT & COPY (6)
+    for aid in ["blog_post", "email_campaign", "newsletter", "landing_page", "product_description", "faq_generator"]:
         registry.register(AgentMetadata(
             agent_id=aid, name=aid.replace('_', ' ').title(), description=f"Expert {aid.replace('_', ' ')} writing.",
             category="content", icon="Pen", input_model=ContentInput, output_model=ContentOutput, is_implemented=True

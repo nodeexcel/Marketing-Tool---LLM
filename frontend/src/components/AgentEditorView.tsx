@@ -16,7 +16,6 @@ import { AGENT_CATEGORIES } from '../data/agents';
 import { AppLogo } from './Icons';
 import ConfirmDialog from './ConfirmDialog';
 import { BrandIdentityOutput } from './Core/agents/BrandIdentityOutput';
-import { LogoDesignerOutput } from './Core/agents/LogoDesignerOutput';
 import { SEOOutput } from './Core/agents/SEOOutput';
 
 import { AgentForm } from './Core/AgentForm';
@@ -58,7 +57,6 @@ import { NewsletterOutput } from './Core/agents/NewsletterOutput';
 import { LandingPageOutput } from './Core/agents/LandingPageOutput';
 import { ProductDescriptionOutput } from './Core/agents/ProductDescriptionOutput';
 import { FaqGeneratorOutput } from './Core/agents/FaqGeneratorOutput';
-import { SmsMarketingOutput } from './Core/agents/SmsMarketingOutput';
 // Individual Advertising output components
 import { MetaAdsOutput } from './Core/agents/MetaAdsOutput';
 import { GoogleSearchAdsOutput } from './Core/agents/GoogleSearchAdsOutput';
@@ -73,8 +71,6 @@ import { ThumbnailIdeaOutput } from './Core/agents/ThumbnailIdeaOutput';
 import { InstagramPostOutput } from './Core/agents/InstagramPostOutput';
 import { InstagramStoryOutput } from './Core/agents/InstagramStoryOutput';
 import { InstagramReelOutput } from './Core/agents/InstagramReelOutput';
-import { InstagramCarouselOutput } from './Core/agents/InstagramCarouselOutput';
-import { InstagramBioOutput } from './Core/agents/InstagramBioOutput';
 import { FacebookPostOutput } from './Core/agents/FacebookPostOutput';
 import { FacebookAdCopyOutput } from './Core/agents/FacebookAdCopyOutput';
 /* ─────────────────────────────────────── */
@@ -217,11 +213,10 @@ export default function AgentEditorView() {
     const outputIncludesText = outputMode === 'structured-text' || outputMode.includes('text');
     const outputIncludesMedia = outputMode === 'image' || outputMode === 'video' || outputMode.includes('image') || outputMode.includes('video');
     const isBrandIdentity = agentId === 'brand_identity';
-    const isLogoDesigner = agentId === 'logo_designer';
     const isHeroImage = agentId === 'hero_image';
 
     const SOCIAL_AGENT_IDS = new Set([
-        'instagram_post', 'instagram_story', 'instagram_reel', 'instagram_carousel', 'instagram_bio',
+        'instagram_post', 'instagram_story', 'instagram_reel',
         'facebook_post', 'facebook_ad_copy',
         'linkedin_post', 'linkedin_article', 'linkedin_ad',
         'twitter_tweet', 'twitter_thread', 'twitter_ad',
@@ -256,11 +251,6 @@ export default function AgentEditorView() {
         return [];
     }, [output, isSocialAgent]);
 
-    const logoImages = useMemo(
-        () => mediaItems.filter((m) => m.type === 'image'),
-        [mediaItems]
-    );
-
     const structuredOutput = useMemo(() => {
         // Priority: version metadata > current output
         const versionData = versions[activeVersionIdx]?.metadata?.structured_data;
@@ -292,11 +282,11 @@ export default function AgentEditorView() {
         // Strategy
         'creative_direction', 'campaign_concept', 'content_calendar',
         // Visual
-        'logo_designer', 'hero_image', 'ad_creative', 'product_photoshoot', 'mockup_generator', 'image_generator', 'image_editor', 'infographic',
+        'hero_image', 'ad_creative', 'product_photoshoot', 'mockup_generator', 'image_generator', 'image_editor', 'infographic',
         // Video
         'video_ad_script', 'youtube_script', 'ai_video_gen', 'thumbnail_idea',
         // Content & Copy
-        'blog_post', 'email_campaign', 'newsletter', 'landing_page', 'product_description', 'faq_generator', 'sms_marketing',
+        'blog_post', 'email_campaign', 'newsletter', 'landing_page', 'product_description', 'faq_generator',
         // Ads
         'meta_ads', 'google_search_ads', 'google_display_ads', 'youtube_ads',
         // SEO
@@ -320,7 +310,6 @@ export default function AgentEditorView() {
             case 'campaign_concept': return <CampaignConceptOutput data={structuredOutput} />;
             case 'content_calendar': return <ContentCalendarOutput data={structuredOutput} />;
             // Visual
-            case 'logo_designer': return <LogoDesignerOutput images={mediaItems} status={status as 'draft' | 'final'} data={{ ...(structuredOutput || {}), assets: mediaItems }} />;
             case 'image_generator': return <ImageGeneratorOutput data={{ ...(structuredOutput || {}), assets: mediaItems }} />;
             case 'hero_image': return <HeroImageOutput data={{ ...(structuredOutput || {}), assets: mediaItems }} />;
             case 'ad_creative': return <AdCreativeOutput data={{ ...(structuredOutput || {}), assets: mediaItems }} />;
@@ -340,7 +329,6 @@ export default function AgentEditorView() {
             case 'landing_page': return <LandingPageOutput data={structuredOutput} />;
             case 'product_description': return <ProductDescriptionOutput data={structuredOutput} />;
             case 'faq_generator': return <FaqGeneratorOutput data={structuredOutput} />;
-            case 'sms_marketing': return <SmsMarketingOutput data={structuredOutput} />;
             // Ads
             case 'meta_ads': return <MetaAdsOutput data={structuredOutput} />;
             case 'google_search_ads': return <GoogleSearchAdsOutput data={structuredOutput} />;
@@ -1015,17 +1003,6 @@ export default function AgentEditorView() {
                                     {isBrandIdentity ? (
                                         <BrandIdentityOutput
                                             data={versions[activeVersionIdx]?.metadata?.structured_data || output?.structured_data || output}
-                                        />
-                                    ) : isLogoDesigner ? (
-                                        <LogoDesignerOutput
-                                            data={versions[activeVersionIdx]?.metadata?.structured_data || output?.structured_data || output}
-                                            textContent={editorContent}
-                                            onTextChange={(newContent: string) => {
-                                                setEditorContent(newContent);
-                                                setOutput({ ...output, text_content: newContent });
-                                            }}
-                                            images={logoImages}
-                                            status={status}
                                         />
                                     ) : ['keyword_researcher', 'on_page_seo', 'technical_seo', 'aeo_optimizer'].includes(agentId) ? (
                                         <SEOOutput 

@@ -413,7 +413,7 @@ export const AgentForm: React.FC<AgentFormProps> = ({
 
     // Visual agents accept images (max 4), all others accept text docs (max 1)
     const VISUAL_AGENTS = new Set([
-        'logo_designer', 'hero_image', 'product_photoshoot', 'ad_creative',
+        'hero_image', 'product_photoshoot', 'ad_creative',
         'image_editor', 'mockup_generator', 'thumbnail_idea',
     ]);
     const isVisualAgent = VISUAL_AGENTS.has(agentId);

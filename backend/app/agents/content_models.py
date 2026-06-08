@@ -8,7 +8,7 @@ class ContentInput(BaseAgentInput):
     agent_id: Literal[
         "blog_post", "email_campaign", "newsletter",
         "landing_page", "product_description",
-        "faq_generator", "sms_marketing",
+        "faq_generator",
     ]
     topic: str
     target_length_words: Optional[int] = None

@@ -99,23 +99,6 @@ class ContentCalendarOutput(BaseAgentOutput):
 
 # --- CATEGORY 3: VISUAL DESIGN ---
 
-# 10. Logo Designer
-class LogoDesignerInput(BaseAgentInput):
-    agent_id: str = "logo_designer"
-    brand_name: Optional[str] = None
-    styles: List[str] = []                  # ["wordmark", "icon", "combination", "abstract"]
-    colors: List[str] = []                  # Hex colors to enforce
-    icon_concept: Optional[str] = None
-    variation_count: int = 4
-    brand_description: Optional[str] = None
-    usage_context: Optional[str] = None
-
-
-class LogoDesignerOutput(BaseAgentOutput):
-    agent_id: str = "logo_designer"
-    assets: List[GeneratedAsset]            # 4-8 logo variations
-    context_updates: Dict[str, Any] = {}    # Writes: logo_url
-
 # 11. Hero Image
 class HeroImageInput(BaseAgentInput):
     agent_id: str = "hero_image"

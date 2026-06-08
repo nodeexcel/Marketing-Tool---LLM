@@ -4,7 +4,7 @@ import {
     Compass, Database,
     Fingerprint, Type, Quote, Users, Shield,
     Lightbulb,
-    PenTool, Image as ImageIcon, Camera, Layout, Crop, MonitorSmartphone,
+    Image as ImageIcon, Camera, Layout, Crop, MonitorSmartphone,
     Video, FileVideo, Mic, Tv,
     Pen, MessageCircle, Mail, FileText, Search,
     MessageSquare, Sparkles,
@@ -56,7 +56,6 @@ export const AGENT_CATEGORIES: AgentCategory[] = [
         description: 'Graphics and imagery.',
         color: 'var(--accent-2)',
         agents: [
-            { name: 'Logo Designer', id: 'logo_designer', icon: PenTool, desc: 'Creates professional logo variations.', badge: undefined, outputMode: 'image' },
             { name: 'Image Generator', id: 'hero_image', icon: ImageIcon, desc: 'Creates high-impact banner visuals.', badge: undefined, outputMode: 'image' },
             { name: 'Product Photoshoot', id: 'product_photoshoot', icon: Camera, desc: 'High-end product photography.', badge: undefined, outputMode: 'image' },
             { name: 'Ad Creative Designer', id: 'ad_creative', icon: Layout, desc: 'Designs platform-specific visuals.', badge: undefined, outputMode: 'image' },
@@ -73,8 +72,6 @@ export const AGENT_CATEGORIES: AgentCategory[] = [
             { name: 'IG Post', id: 'instagram_post', icon: ImageIcon, desc: 'Optimized Instagram grid posts.', badge: undefined, outputMode: 'text+image+video' },
             { name: 'IG Story', id: 'instagram_story', icon: Sparkles, desc: 'Interactive Instagram stories.', badge: undefined, outputMode: 'text+image+video' },
             { name: 'IG Reel', id: 'instagram_reel', icon: Video, desc: 'Short-form Instagram video scripts.', badge: undefined, outputMode: 'text+video' },
-            { name: 'IG Carousel', id: 'instagram_carousel', icon: Layout, desc: 'Multi-slide Instagram content.', badge: undefined, outputMode: 'text+image' },
-            { name: 'IG Bio', id: 'instagram_bio', icon: Pen, desc: 'SEO-optimized profile bio.', badge: undefined, outputMode: 'text' },
             { name: 'FB Post', id: 'facebook_post', icon: MessageSquare, desc: 'Engagement Facebook posts.', badge: undefined, outputMode: 'text+image+video' },
             { name: 'FB Ad Copy', id: 'facebook_ad_copy', icon: Pen, desc: 'High-converting Facebook ads.', badge: undefined, outputMode: 'text+image' },
         ]
@@ -101,7 +98,6 @@ export const AGENT_CATEGORIES: AgentCategory[] = [
             { name: 'Landing Page', id: 'landing_page', icon: Layout, desc: 'Conversion-focused web copy.', badge: undefined, outputMode: 'text' },
             { name: 'Product Description', id: 'product_description', icon: Pen, desc: 'E-commerce copy.', badge: undefined, outputMode: 'text' },
             { name: 'FAQ Generator', id: 'faq_generator', icon: MessageSquare, desc: 'Customer support content.', badge: undefined, outputMode: 'structured-text' },
-            { name: 'SMS Marketing', id: 'sms_marketing', icon: MessageSquare, desc: 'Concise mobile copy.', badge: undefined, outputMode: 'text' },
         ]
     },
     {

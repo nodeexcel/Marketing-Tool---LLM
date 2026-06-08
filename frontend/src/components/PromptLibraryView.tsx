@@ -68,7 +68,6 @@ const AGENT_CATEGORIES: CategoryDef[] = [
     label: 'Visual Design',
     color: '#3b82f6',
     agents: [
-      { id: 'logo_designer', label: 'Logo Designer' },
       { id: 'hero_image', label: 'Hero Image' },
       { id: 'product_photoshoot', label: 'Product Photoshoot' },
       { id: 'ad_creative', label: 'Ad Creative' },
@@ -85,8 +84,6 @@ const AGENT_CATEGORIES: CategoryDef[] = [
       { id: 'instagram_post', label: 'Instagram Post' },
       { id: 'instagram_story', label: 'Instagram Story' },
       { id: 'instagram_reel', label: 'Instagram Reel' },
-      { id: 'instagram_carousel', label: 'Instagram Carousel' },
-      { id: 'instagram_bio', label: 'Instagram Bio' },
       { id: 'facebook_post', label: 'Facebook Post' },
       { id: 'facebook_ad_copy', label: 'Facebook Ad Copy' },
     ],
@@ -113,7 +110,6 @@ const AGENT_CATEGORIES: CategoryDef[] = [
       { id: 'landing_page', label: 'Landing Page' },
       { id: 'product_description', label: 'Product Description' },
       { id: 'faq_generator', label: 'FAQ Generator' },
-      { id: 'sms_marketing', label: 'SMS Marketing' },
     ],
   },
   {

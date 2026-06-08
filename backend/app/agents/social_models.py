@@ -20,7 +20,7 @@ class SocialPost(BaseModel):
 
 # 4.1 Instagram
 class InstagramAgentInput(BaseAgentInput):
-    agent_id: Literal["instagram_post", "instagram_story", "instagram_reel", "instagram_carousel", "instagram_bio"]
+    agent_id: Literal["instagram_post", "instagram_story", "instagram_reel"]
     topic: str
     visual_theme: Optional[str] = None
     tone_override: Optional[str] = None
