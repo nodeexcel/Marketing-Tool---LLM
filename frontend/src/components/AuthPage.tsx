@@ -68,7 +68,7 @@ export default function AuthPage() {
                     </div>
                     <div>
                         <h1 style={{ fontSize: 22, fontWeight: 800, letterSpacing: '-0.5px' }}>
-                            Marketing<span className="gradient-text">AI</span> Studio
+                            Ad<span className="gradient-text">vinc</span> Studio
                         </h1>
                         <p style={{ fontSize: 12, color: 'var(--text-muted)' }}>70 + AI Agents • One Platform</p>
                     </div>
